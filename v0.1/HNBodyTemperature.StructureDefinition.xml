@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <url value="http://example.org/fhir/StructureDefinition/HNBodyTemperature" />
+  <name value="HNBodyTemperature" />
+  <status value="draft" />
+  <fhirVersion value="3.0.1" />
+  <kind value="resource" />
+  <abstract value="false" />
+  <type value="Observation" />
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/bodytemp" />
+  <derivation value="constraint" />
+  <differential>
+    <element id="Observation.extension">
+      <path value="Observation.extension" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="url" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+    </element>
+    <element id="Observation.extension:clothingstate">
+      <path value="Observation.extension" />
+      <sliceName value="clothingstate" />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://example.org/fhir/StructureDefinition/HNClothingState" />
+      </type>
+    </element>
+    <element id="Observation.extension:activeheating">
+      <path value="Observation.extension" />
+      <sliceName value="activeheating" />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://example.org/fhir/StructureDefinition/HNActiveHeating" />
+      </type>
+    </element>
+    <element id="Observation.extension:dayssincemenstruationstart">
+      <path value="Observation.extension" />
+      <sliceName value="dayssincemenstruationstart" />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://example.org/fhir/StructureDefinition/HNDaysSinceMenstruationStart" />
+      </type>
+    </element>
+    <element id="Observation.extension:heatingdevice">
+      <path value="Observation.extension" />
+      <sliceName value="heatingdevice" />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://example.org/fhir/StructureDefinition/HNHeatingDevice" />
+      </type>
+    </element>
+    <element id="Observation.extension:environmentalconditions">
+      <path value="Observation.extension" />
+      <sliceName value="environmentalconditions" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://example.org/fhir/StructureDefinition/HNEnvironment" />
+      </type>
+    </element>
+    <element id="Observation.extension:levelofexertion">
+      <path value="Observation.extension" />
+      <sliceName value="levelofexertion" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://example.org/fhir/StructureDefinition/HNExertion" />
+      </type>
+    </element>
+  </differential>
+</StructureDefinition>

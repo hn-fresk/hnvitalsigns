@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <url value="http://example.org/fhir/StructureDefinition/HNRespiratoryRate" />
+  <name value="HNRespiratoryRate" />
+  <status value="draft" />
+  <fhirVersion value="3.0.1" />
+  <kind value="resource" />
+  <abstract value="false" />
+  <type value="Observation" />
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/resprate" />
+  <derivation value="constraint" />
+  <differential>
+    <element id="Observation.extension">
+      <path value="Observation.extension" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="url" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+    </element>
+    <element id="Observation.extension:respirationrythm">
+      <path value="Observation.extension" />
+      <sliceName value="respirationrythm" />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://example.org/fhir/StructureDefinition/HNRespirationRythm" />
+      </type>
+    </element>
+    <element id="Observation.extension:respirationdepth">
+      <path value="Observation.extension" />
+      <sliceName value="respirationdepth" />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://example.org/fhir/StructureDefinition/HNRespirationDepth" />
+      </type>
+    </element>
+    <element id="Observation.extension:respirationpattern">
+      <path value="Observation.extension" />
+      <sliceName value="respirationpattern" />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://example.org/fhir/StructureDefinition/HNRespirationPattern" />
+      </type>
+    </element>
+    <element id="Observation.extension:descriptionofrespiration">
+      <path value="Observation.extension" />
+      <sliceName value="descriptionofrespiration" />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://example.org/fhir/StructureDefinition/HNRespirationDescription" />
+      </type>
+    </element>
+    <element id="Observation.extension:inspiredoxygen">
+      <path value="Observation.extension" />
+      <sliceName value="inspiredoxygen" />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://example.org/fhir/StructureDefinition/HNInspiredOxygen" />
+      </type>
+    </element>
+    <element id="Observation.extension:levelofexertion">
+      <path value="Observation.extension" />
+      <sliceName value="levelofexertion" />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://example.org/fhir/StructureDefinition/HNExertion" />
+      </type>
+    </element>
+    <element id="Observation.extension:bodyPosition">
+      <path value="Observation.extension" />
+      <sliceName value="bodyPosition" />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/observation-bodyPosition" />
+      </type>
+    </element>
+    <element id="Observation.extension:bodyPosition.valueCodeableConcept:valueCodeableConcept">
+      <path value="Observation.extension.valueCodeableConcept" />
+      <sliceName value="valueCodeableConcept" />
+    </element>
+  </differential>
+</StructureDefinition>
