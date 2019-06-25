@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<template xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="openEHR/v1/Template">
+  <id>775ed1c6-6b8c-49b9-b99d-23df2caa1711</id>
+  <name>Hjertefrekvens</name>
+  <description>
+    <lifecycle_state>Initial</lifecycle_state>
+    <details>
+      <purpose>Template defining the FHIR integration in Helse Nord</purpose>
+      <use />
+      <misuse />
+    </details>
+    <other_details>
+      <item>
+        <key>MetaDataSet:Sample Set </key>
+        <value>Template metadata sample set </value>
+      </item>
+      <item>
+        <key>Acknowledgements</key>
+        <value />
+      </item>
+      <item>
+        <key>Business Process Level</key>
+        <value />
+      </item>
+      <item>
+        <key>Care setting</key>
+        <value />
+      </item>
+      <item>
+        <key>Client group</key>
+        <value />
+      </item>
+      <item>
+        <key>Clinical Record Element</key>
+        <value />
+      </item>
+      <item>
+        <key>Copyright</key>
+        <value />
+      </item>
+      <item>
+        <key>Issues</key>
+        <value />
+      </item>
+      <item>
+        <key>Owner</key>
+        <value />
+      </item>
+      <item>
+        <key>Sign off</key>
+        <value />
+      </item>
+      <item>
+        <key>Speciality</key>
+        <value />
+      </item>
+      <item>
+        <key>User roles</key>
+        <value />
+      </item>
+    </other_details>
+  </description>
+  <definition xsi:type="OBSERVATION" archetype_id="openEHR-EHR-OBSERVATION.pulse.v1" concept_name="Puls/Hjertefrekvens" max="1" name="Hjertefrekvens">
+    <Rule path="/data[at0002]/events[at0003]/data[at0001]/items[at1005]" max="0" />
+    <Rule path="/data[at0002]/events[at0003]/data[at0001]/items[at0004]">
+      <nameConstraint>
+        <excludedValues>local::at1026</excludedValues>
+      </nameConstraint>
+    </Rule>
+    <Rule path="/data[at0002]/events[at0003]/data[at0001]/items[at1023]" max="0" />
+    <Rule path="/data[at0002]/events[at0003]/state[at0012]/items[at1018]" max="0" />
+    <Rule path="/data[at0002]/events[at1036]" max="0" />
+    <Rule path="/protocol[at0010]/items[at1037]">
+      <constraint xsi:type="multipleConstraint">
+        <includedTypes>Coded_text</includedTypes>
+      </constraint>
+    </Rule>
+    <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.level_of_exertion.v0" concept_name="Anstrengelsesnivå" path="/data[at0002]/events[at0003]/state[at0012]/items[at1017]" />
+  </definition>
+</template>
