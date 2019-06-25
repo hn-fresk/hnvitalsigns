@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<template xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="openEHR/v1/Template">
+  <id>93d7baae-8dc1-4735-a961-f6b827140cbb</id>
+  <name>Height</name>
+  <description>
+    <lifecycle_state>Initial</lifecycle_state>
+    <details>
+      <purpose>Klinisk modell for FHIR integrasjon i Helse Nord</purpose>
+      <use />
+      <misuse />
+    </details>
+    <other_details>
+      <item>
+        <key>MetaDataSet:Sample Set </key>
+        <value>Template metadata sample set </value>
+      </item>
+      <item>
+        <key>Acknowledgements</key>
+        <value />
+      </item>
+      <item>
+        <key>Business Process Level</key>
+        <value />
+      </item>
+      <item>
+        <key>Care setting</key>
+        <value />
+      </item>
+      <item>
+        <key>Client group</key>
+        <value />
+      </item>
+      <item>
+        <key>Clinical Record Element</key>
+        <value />
+      </item>
+      <item>
+        <key>Copyright</key>
+        <value />
+      </item>
+      <item>
+        <key>Issues</key>
+        <value />
+      </item>
+      <item>
+        <key>Owner</key>
+        <value />
+      </item>
+      <item>
+        <key>Sign off</key>
+        <value />
+      </item>
+      <item>
+        <key>Speciality</key>
+        <value />
+      </item>
+      <item>
+        <key>User roles</key>
+        <value />
+      </item>
+    </other_details>
+  </description>
+  <definition xsi:type="OBSERVATION" archetype_id="openEHR-EHR-OBSERVATION.height.v1" concept_name="Høyde/Lengde">
+    <Rule path="/data[at0001]/events[at0002]/data[at0003]/items[at0026]" max="0" />
+    <Rule path="/data[at0001]/events[at0002]/state[at0013]/items[at0019]" max="0" />
+    <Rule path="/data[at0001]/events[at0021]" max="0" />
+    <Rule path="/protocol[at0007]/items[at0025]" max="0" />
+    <Rule path="/protocol[at0007]/items[at0028]" max="0" />
+    <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.device.v1" template_id="a735ebb6-5a43-481f-96d9-71df2670a3ca" concept_name="Device" path="/protocol[at0007]/items[at0011]" />
+  </definition>
+</template>

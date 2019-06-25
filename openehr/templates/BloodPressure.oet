@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<template xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="openEHR/v1/Template">
+  <id>1d936ded-4f6b-4fe0-b671-e8c01febce6c</id>
+  <name>BloodPressure</name>
+  <description>
+    <lifecycle_state>Initial</lifecycle_state>
+    <details>
+      <purpose>Template matching the FHIR integration in Helse Nord</purpose>
+      <use />
+      <misuse />
+    </details>
+    <other_details>
+      <item>
+        <key>MetaDataSet:Sample Set </key>
+        <value>Template metadata sample set </value>
+      </item>
+      <item>
+        <key>Acknowledgements</key>
+        <value />
+      </item>
+      <item>
+        <key>Business Process Level</key>
+        <value />
+      </item>
+      <item>
+        <key>Care setting</key>
+        <value />
+      </item>
+      <item>
+        <key>Client group</key>
+        <value />
+      </item>
+      <item>
+        <key>Clinical Record Element</key>
+        <value />
+      </item>
+      <item>
+        <key>Copyright</key>
+        <value />
+      </item>
+      <item>
+        <key>Issues</key>
+        <value />
+      </item>
+      <item>
+        <key>Owner</key>
+        <value />
+      </item>
+      <item>
+        <key>Sign off</key>
+        <value />
+      </item>
+      <item>
+        <key>Speciality</key>
+        <value />
+      </item>
+      <item>
+        <key>User roles</key>
+        <value />
+      </item>
+    </other_details>
+  </description>
+  <definition xsi:type="OBSERVATION" archetype_id="openEHR-EHR-OBSERVATION.blood_pressure.v2" concept_name="Blodtrykk">
+    <Rule path="/data[at0001]/events[at0006]/data[at0003]/items[at1007]" max="0" />
+    <Rule path="/data[at0001]/events[at0006]/data[at0003]/items[at1059]" max="0" />
+    <Rule path="/data[at0001]/events[at0006]/state[at0007]/items[at1052]" max="0" />
+    <Rule path="/data[at0001]/events[at1042]" max="0" />
+    <Rule path="/protocol[at0011]/items[at0014]">
+      <constraint xsi:type="multipleConstraint">
+        <includedTypes>Coded_text</includedTypes>
+      </constraint>
+    </Rule>
+    <Rule path="/protocol[at0011]/items[at1038]" max="0" />
+    <Rule path="/protocol[at0011]/items[at1054]" max="0" />
+    <Rule path="/protocol[at0011]/items[at1055]" max="0" />
+    <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.level_of_exertion.v0" concept_name="Anstrengelsesnivå" path="/data[at0001]/events[at0006]/state[at0007]/items[at1030]" />
+    <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.device.v1" concept_name="Medisinsk utstyr" path="/protocol[at0011]/items[at1025]">
+      <Rule path="/items[at0002]" max="0" />
+      <Rule path="/items[at0021]" max="0" />
+      <Rule path="/items[at0004]" max="0" />
+      <Rule path="/items[at0005]" max="0" />
+      <Rule path="/items[at0020]" max="0" />
+      <Rule path="/items[at0022]" max="0" />
+      <Rule path="/items[at0023]" max="0" />
+      <Rule path="/items[at0006]" max="0" />
+      <Rule path="/items[at0025]" max="0" />
+      <Rule path="/items[at0007]" max="0" />
+      <Rule path="/items[at0024]" max="0" />
+      <Rule path="/items[at0008]" max="0" />
+    </Items>
+  </definition>
+</template>

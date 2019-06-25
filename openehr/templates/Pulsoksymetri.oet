@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<template xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="openEHR/v1/Template">
+  <id>52d0d483-8553-499a-b1ce-6fa36eecd34d</id>
+  <name>Pulsoksymetri</name>
+  <description>
+    <lifecycle_state>Initial</lifecycle_state>
+    <details>
+      <purpose>Klinisk modell for FHIR integrasjon i Helse Nord </purpose>
+      <use />
+      <misuse />
+    </details>
+    <other_details>
+      <item>
+        <key>MetaDataSet:Sample Set </key>
+        <value>Template metadata sample set </value>
+      </item>
+      <item>
+        <key>Acknowledgements</key>
+        <value />
+      </item>
+      <item>
+        <key>Business Process Level</key>
+        <value />
+      </item>
+      <item>
+        <key>Care setting</key>
+        <value />
+      </item>
+      <item>
+        <key>Client group</key>
+        <value />
+      </item>
+      <item>
+        <key>Clinical Record Element</key>
+        <value />
+      </item>
+      <item>
+        <key>Copyright</key>
+        <value />
+      </item>
+      <item>
+        <key>Issues</key>
+        <value />
+      </item>
+      <item>
+        <key>Owner</key>
+        <value />
+      </item>
+      <item>
+        <key>Sign off</key>
+        <value />
+      </item>
+      <item>
+        <key>Speciality</key>
+        <value />
+      </item>
+      <item>
+        <key>User roles</key>
+        <value />
+      </item>
+    </other_details>
+  </description>
+  <definition xsi:type="OBSERVATION" archetype_id="openEHR-EHR-OBSERVATION.pulse_oximetry.v1" concept_name="Pulsoksymetri">
+    <Rule path="/data[at0001]/events[at0002]/data[at0003]/items[at0044]" max="0" />
+    <Rule path="/data[at0001]/events[at0002]/data[at0003]/items[at0045]" max="0" />
+    <Rule path="/data[at0001]/events[at0002]/data[at0003]/items[at0046]" max="0" />
+    <Rule path="/data[at0001]/events[at0002]/data[at0003]/items[at0058]" max="0" />
+    <Rule path="/data[at0001]/events[at0002]/state[at0014]/items[at0016]" max="0" />
+    <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.level_of_exertion.v0" concept_name="Anstrengelsesnivå" path="/data[at0001]/events[at0002]/state[at0014]/items[at0034]" />
+    <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.inspired_oxygen.v1" concept_name="Innåndet oksygen" path="/data[at0001]/events[at0002]/state[at0014]/items[at0015]" />
+    <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.device.v1" concept_name="Medisinsk utstyr" path="/protocol[at0007]/items[at0018]">
+      <Rule path="/items[at0002]" max="0" />
+      <Rule path="/items[at0021]" max="0" />
+      <Rule path="/items[at0004]" max="0" />
+      <Rule path="/items[at0005]" max="0" />
+      <Rule path="/items[at0020]" max="0" />
+      <Rule path="/items[at0022]" max="0" />
+      <Rule path="/items[at0023]" max="0" />
+      <Rule path="/items[at0006]" max="0" />
+      <Rule path="/items[at0025]" max="0" />
+      <Rule path="/items[at0007]" max="0" />
+      <Rule path="/items[at0024]" max="0" />
+    </Items>
+  </definition>
+</template>
