@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <url value="http://example.org/fhir/StructureDefinition/SleepStatusExtension" />
+  <name value="SleepStatusExtension" />
+  <status value="draft" />
+  <fhirVersion value="4.0.0" />
+  <kind value="complex-type" />
+  <abstract value="false" />
+  <context>
+    <type value="element" />
+    <expression value="Observation" />
+  </context>
+  <type value="Extension" />
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Extension" />
+  <derivation value="constraint" />
+  <differential>
+    <element id="Extension.value[x]">
+      <path value="Extension.value[x]" />
+      <type>
+        <code value="CodeableConcept" />
+      </type>
+      <binding>
+        <strength value="required" />
+        <valueSet value="http://dips.no/fhir/ValueSet/HNSleepStatusValueset" />
+      </binding>
+    </element>
+    <element id="Extension.value[x].coding">
+      <path value="Extension.value[x].coding" />
+      <min value="1" />
+      <max value="1" />
+    </element>
+    <element id="Extension.value[x].coding.system">
+      <path value="Extension.value[x].coding.system" />
+      <min value="1" />
+    </element>
+    <element id="Extension.value[x].coding.version">
+      <path value="Extension.value[x].coding.version" />
+      <max value="0" />
+    </element>
+    <element id="Extension.value[x].coding.code">
+      <path value="Extension.value[x].coding.code" />
+      <min value="1" />
+    </element>
+    <element id="Extension.value[x].coding.display">
+      <path value="Extension.value[x].coding.display" />
+      <min value="1" />
+    </element>
+    <element id="Extension.value[x].coding.userSelected">
+      <path value="Extension.value[x].coding.userSelected" />
+      <max value="0" />
+    </element>
+    <element id="Extension.value[x].text">
+      <path value="Extension.value[x].text" />
+      <max value="0" />
+    </element>
+  </differential>
+</StructureDefinition>

@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <url value="http://example.org/fhir/StructureDefinition/HNBloodPressure" />
+  <name value="HNBloodPressure" />
+  <status value="draft" />
+  <fhirVersion value="4.0.0" />
+  <kind value="resource" />
+  <abstract value="false" />
+  <type value="Observation" />
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Observation" />
+  <derivation value="constraint" />
+  <differential>
+    <element id="Observation.extension">
+      <path value="Observation.extension" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="url" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+    </element>
+    <element id="Observation.extension:LevelOfExertion">
+      <path value="Observation.extension" />
+      <sliceName value="LevelOfExertion" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://dips.no/fhir/StructureDefinition/levelofexertionExtension" />
+      </type>
+    </element>
+    <element id="Observation.extension:SleepStatus">
+      <path value="Observation.extension" />
+      <sliceName value="SleepStatus" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://example.org/fhir/StructureDefinition/SleepStatusExtension" />
+      </type>
+    </element>
+    <element id="Observation.extension:HeadTilt">
+      <path value="Observation.extension" />
+      <sliceName value="HeadTilt" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://example.org/fhir/StructureDefinition/HNHeadTilt" />
+      </type>
+    </element>
+    <element id="Observation.extension:DiastolicEndPoint">
+      <path value="Observation.extension" />
+      <sliceName value="DiastolicEndPoint" />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://example.org/fhir/StructureDefinition/diastolicendpoint" />
+      </type>
+    </element>
+    <element id="Observation.extension:CuffSize">
+      <path value="Observation.extension" />
+      <sliceName value="CuffSize" />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://example.org/fhir/StructureDefinition/CuffSizeExtension" />
+      </type>
+    </element>
+    <element id="Observation.basedOn">
+      <path value="Observation.basedOn" />
+      <max value="0" />
+    </element>
+    <element id="Observation.partOf">
+      <path value="Observation.partOf" />
+      <max value="0" />
+    </element>
+    <element id="Observation.status">
+      <path value="Observation.status" />
+      <short value="final | amended" />
+    </element>
+    <element id="Observation.category">
+      <path value="Observation.category" />
+      <min value="1" />
+      <max value="1" />
+    </element>
+    <element id="Observation.category.coding">
+      <path value="Observation.category.coding" />
+      <min value="1" />
+      <max value="1" />
+    </element>
+    <element id="Observation.category.coding.system">
+      <path value="Observation.category.coding.system" />
+      <fixedUri value="http://terminology.hl7.org/CodeSystem/observation-category" />
+    </element>
+    <element id="Observation.category.coding.version">
+      <path value="Observation.category.coding.version" />
+      <max value="0" />
+    </element>
+    <element id="Observation.category.coding.code">
+      <path value="Observation.category.coding.code" />
+      <fixedCode value="Vital Signs" />
+    </element>
+    <element id="Observation.category.coding.display">
+      <path value="Observation.category.coding.display" />
+      <fixedString value="Vital Signs" />
+    </element>
+    <element id="Observation.category.coding.userSelected">
+      <path value="Observation.category.coding.userSelected" />
+      <max value="0" />
+    </element>
+    <element id="Observation.category.text">
+      <path value="Observation.category.text" />
+      <max value="0" />
+    </element>
+    <element id="Observation.code">
+      <path value="Observation.code" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="coding.system" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+    </element>
+    <element id="Observation.code:BloodPressure">
+      <path value="Observation.code" />
+      <sliceName value="BloodPressure" />
+    </element>
+    <element id="Observation.code:BloodPressure.coding.system">
+      <path value="Observation.code.coding.system" />
+      <min value="1" />
+    </element>
+    <element id="Observation.code:BloodPressure.coding.version">
+      <path value="Observation.code.coding.version" />
+      <max value="0" />
+    </element>
+    <element id="Observation.code:BloodPressure.coding.code">
+      <path value="Observation.code.coding.code" />
+      <min value="1" />
+    </element>
+    <element id="Observation.code:BloodPressure.coding.userSelected">
+      <path value="Observation.code.coding.userSelected" />
+      <max value="0" />
+    </element>
+    <element id="Observation.subject.reference">
+      <path value="Observation.subject.reference" />
+      <min value="1" />
+    </element>
+    <element id="Observation.subject.type">
+      <path value="Observation.subject.type" />
+      <max value="0" />
+    </element>
+    <element id="Observation.subject.identifier">
+      <path value="Observation.subject.identifier" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="system" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+      <min value="1" />
+    </element>
+    <element id="Observation.subject.identifier:NorwegianSocialSecurityNumber">
+      <path value="Observation.subject.identifier" />
+      <sliceName value="NorwegianSocialSecurityNumber" />
+    </element>
+    <element id="Observation.subject.identifier:NorwegianSocialSecurityNumber.use">
+      <path value="Observation.subject.identifier.use" />
+      <max value="0" />
+    </element>
+    <element id="Observation.subject.identifier:NorwegianSocialSecurityNumber.type">
+      <path value="Observation.subject.identifier.type" />
+      <max value="0" />
+    </element>
+    <element id="Observation.subject.identifier:NorwegianSocialSecurityNumber.system">
+      <path value="Observation.subject.identifier.system" />
+      <min value="1" />
+      <fixedUri value="urn:oid:2.16.578.1.12.4.1.4.1" />
+    </element>
+    <element id="Observation.subject.identifier:NorwegianSocialSecurityNumber.value">
+      <path value="Observation.subject.identifier.value" />
+      <min value="1" />
+    </element>
+    <element id="Observation.subject.identifier:NorwegianSocialSecurityNumber.period">
+      <path value="Observation.subject.identifier.period" />
+      <max value="0" />
+    </element>
+    <element id="Observation.subject.identifier:NorwegianSocialSecurityNumber.assigner">
+      <path value="Observation.subject.identifier.assigner" />
+      <max value="0" />
+    </element>
+    <element id="Observation.subject.identifier:NorwegianDNumber">
+      <path value="Observation.subject.identifier" />
+      <sliceName value="NorwegianDNumber" />
+    </element>
+    <element id="Observation.subject.identifier:NorwegianDNumber.use">
+      <path value="Observation.subject.identifier.use" />
+      <max value="0" />
+    </element>
+    <element id="Observation.subject.identifier:NorwegianDNumber.type">
+      <path value="Observation.subject.identifier.type" />
+      <max value="0" />
+    </element>
+    <element id="Observation.subject.identifier:NorwegianDNumber.system">
+      <path value="Observation.subject.identifier.system" />
+      <min value="1" />
+      <fixedUri value="urn:oid:2.16.578.1.12.4.1.4.2" />
+    </element>
+    <element id="Observation.subject.identifier:NorwegianDNumber.value">
+      <path value="Observation.subject.identifier.value" />
+      <min value="1" />
+    </element>
+    <element id="Observation.subject.identifier:NorwegianDNumber.period">
+      <path value="Observation.subject.identifier.period" />
+      <max value="0" />
+    </element>
+    <element id="Observation.subject.identifier:NorwegianDNumber.assigner">
+      <path value="Observation.subject.identifier.assigner" />
+      <max value="0" />
+    </element>
+    <element id="Observation.focus">
+      <path value="Observation.focus" />
+      <max value="0" />
+    </element>
+    <element id="Observation.effective[x]">
+      <path value="Observation.effective[x]" />
+      <min value="1" />
+      <type>
+        <code value="dateTime" />
+      </type>
+      <type>
+        <code value="Period" />
+      </type>
+    </element>
+    <element id="Observation.performer">
+      <path value="Observation.performer" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="identifier.system" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+    </element>
+    <element id="Observation.performer:Author">
+      <path value="Observation.performer" />
+      <sliceName value="Author" />
+      <min value="1" />
+      <max value="1" />
+    </element>
+    <element id="Observation.performer:Author.type">
+      <path value="Observation.performer.type" />
+      <fixedUri value="PractitionerRole" />
+    </element>
+    <element id="Observation.performer:Author.identifier">
+      <path value="Observation.performer.identifier" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="system" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+    </element>
+    <element id="Observation.performer:Author.identifier:DIPSCode">
+      <path value="Observation.performer.identifier" />
+      <sliceName value="DIPSCode" />
+    </element>
+    <element id="Observation.performer:Author.identifier:DIPSCode.use">
+      <path value="Observation.performer.identifier.use" />
+      <max value="0" />
+    </element>
+    <element id="Observation.performer:Author.identifier:DIPSCode.type">
+      <path value="Observation.performer.identifier.type" />
+      <max value="0" />
+    </element>
+    <element id="Observation.performer:Author.identifier:DIPSCode.system">
+      <path value="Observation.performer.identifier.system" />
+      <min value="1" />
+      <fixedUri value="urn:oid:1.3.6.1.4.1.9038.51" />
+    </element>
+    <element id="Observation.performer:Author.identifier:DIPSCode.value">
+      <path value="Observation.performer.identifier.value" />
+      <min value="1" />
+    </element>
+    <element id="Observation.performer:Author.identifier:DIPSCode.period">
+      <path value="Observation.performer.identifier.period" />
+      <max value="0" />
+    </element>
+    <element id="Observation.performer:Author.identifier:DIPSCode.assigner">
+      <path value="Observation.performer.identifier.assigner" />
+      <max value="0" />
+    </element>
+    <element id="Observation.performer:Organization">
+      <path value="Observation.performer" />
+      <sliceName value="Organization" />
+      <min value="1" />
+    </element>
+    <element id="Observation.performer:Organization.reference">
+      <path value="Observation.performer.reference" />
+      <min value="1" />
+    </element>
+    <element id="Observation.performer:Organization.type">
+      <path value="Observation.performer.type" />
+      <min value="1" />
+      <fixedUri value="Organization" />
+    </element>
+    <element id="Observation.performer:Organization.identifier">
+      <path value="Observation.performer.identifier" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="system" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+    </element>
+    <element id="Observation.performer:Organization.identifier:ReshId">
+      <path value="Observation.performer.identifier" />
+      <sliceName value="ReshId" />
+    </element>
+    <element id="Observation.performer:Organization.identifier:ReshId.use">
+      <path value="Observation.performer.identifier.use" />
+      <max value="0" />
+    </element>
+    <element id="Observation.performer:Organization.identifier:ReshId.type">
+      <path value="Observation.performer.identifier.type" />
+      <max value="0" />
+    </element>
+    <element id="Observation.performer:Organization.identifier:ReshId.system">
+      <path value="Observation.performer.identifier.system" />
+      <min value="1" />
+      <fixedUri value="urn:oid:2.16.578.1.12.4.1.4.102" />
+    </element>
+    <element id="Observation.performer:Organization.identifier:ReshId.value">
+      <path value="Observation.performer.identifier.value" />
+      <min value="1" />
+    </element>
+    <element id="Observation.performer:Organization.identifier:ReshId.period">
+      <path value="Observation.performer.identifier.period" />
+      <max value="0" />
+    </element>
+    <element id="Observation.performer:Organization.identifier:ReshId.assigner">
+      <path value="Observation.performer.identifier.assigner" />
+      <max value="0" />
+    </element>
+    <element id="Observation.performer:Organization.identifier:StandardNumber">
+      <path value="Observation.performer.identifier" />
+      <sliceName value="StandardNumber" />
+    </element>
+    <element id="Observation.performer:Organization.identifier:StandardNumber.use">
+      <path value="Observation.performer.identifier.use" />
+      <max value="0" />
+    </element>
+    <element id="Observation.performer:Organization.identifier:StandardNumber.type">
+      <path value="Observation.performer.identifier.type" />
+      <max value="0" />
+    </element>
+    <element id="Observation.performer:Organization.identifier:StandardNumber.system">
+      <path value="Observation.performer.identifier.system" />
+      <min value="1" />
+      <fixedUri value="http://dips.no/fhir/namingsystem/dips-standardnumber" />
+    </element>
+    <element id="Observation.performer:Organization.identifier:StandardNumber.value">
+      <path value="Observation.performer.identifier.value" />
+      <min value="1" />
+    </element>
+    <element id="Observation.performer:Organization.identifier:StandardNumber.period">
+      <path value="Observation.performer.identifier.period" />
+      <max value="0" />
+    </element>
+    <element id="Observation.performer:Organization.identifier:StandardNumber.assigner">
+      <path value="Observation.performer.identifier.assigner" />
+      <max value="0" />
+    </element>
+    <element id="Observation.value[x]">
+      <path value="Observation.value[x]" />
+      <max value="0" />
+    </element>
+    <element id="Observation.dataAbsentReason">
+      <path value="Observation.dataAbsentReason" />
+      <max value="0" />
+    </element>
+    <element id="Observation.bodySite">
+      <path value="Observation.bodySite" />
+      <binding>
+        <strength value="required" />
+        <valueSet value="http://dips.no/fhir/ValueSet/BodyPosition" />
+      </binding>
+    </element>
+    <element id="Observation.method.coding">
+      <path value="Observation.method.coding" />
+      <max value="1" />
+    </element>
+  </differential>
+</StructureDefinition>
