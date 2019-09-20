@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+	<id value="HNBodyPositionForBodyWeightValueSet"/> 
+	<meta> 
+		<lastUpdated value="2018-12-27T22:37:54.724+11:00"/> 
+		<profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/> 
+	</meta> 
+	<text> 
+		<status value="generated"/> 
+		<div xmlns="http://www.w3.org/1999/xhtml">
+			<h2>HNBodyPositionForBodyWeightValueSet</h2> 
+			<div> 
+				<p>Codes used to represent body position when measuring body height.</p> 
+			</div>  
+		</div> 
+	</text> 
+	<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+		<valueCode value="fhir"/> 
+	</extension> 
+	<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+		<valueCode value="draft"/> 
+	</extension> 
+	<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+		<valueInteger value="1"/> 
+	</extension> 
+	<url value="http://helse-nord.no/fhir/ValueSet/HNBodyPositionForBodyWeightValueSet"/> 
+	<identifier> 
+		<system value="urn:ietf:rfc:3986"/> 
+		<value value="urn:oid:2.16.840.1.113883.4.642.3.316"/> 
+	</identifier> 
+	<version value="4.0.0"/> 
+	<name value="HNBodyPositionForBodyWeightValueSet"/> 
+	<title value="Codes representing body position when measuring body height"/> 
+	<status value="draft"/> 
+	<experimental value="false"/> 
+	<date value="2019-09-20T11:00:00+02:00"/> 
+	<publisher value="Helse Nord"/> 
+	<description value="Codes representing body position when measuring body height"/> 
+	<compose> 
+		<include> 
+			<system value="http://snomed.info/sct"/>
+			<concept> 
+				<code value="10904000"/> 
+				<display value="Stående"/> 
+			</concept>
+			<concept> 
+				<code value="102538003"/> 
+				<display value="Liggende"/> 
+			</concept>
+		</include> 
+	</compose> 
+</ValueSet> 
