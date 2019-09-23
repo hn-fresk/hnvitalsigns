@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+	<id value="HNBodyTempBodySiteValueSet"/> 
+	<meta> 
+		<lastUpdated value="2018-12-27T22:37:54.724+11:00"/> 
+		<profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/> 
+	</meta> 
+	<text> 
+		<status value="generated"/> 
+		<div xmlns="http://www.w3.org/1999/xhtml">
+			<h2>HNBodyTempBodySiteValueSet</h2> 
+			<div> 
+				<p>Codes used to represent body site for measuring body temperature.</p> 
+			</div>  
+		</div> 
+	</text> 
+	<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+		<valueCode value="fhir"/> 
+	</extension> 
+	<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+		<valueCode value="draft"/> 
+	</extension> 
+	<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+		<valueInteger value="1"/> 
+	</extension> 
+	<url value="http://helse-nord.no/fhir/ValueSet/HNBodyTempBodySiteValueSet"/> 
+	<identifier> 
+		<system value="urn:ietf:rfc:3986"/> 
+		<value value="urn:oid:2.16.840.1.113883.4.642.3.316"/> 
+	</identifier> 
+	<version value="4.0.0"/> 
+	<name value="HNBodyTempBodySiteValueSet"/> 
+	<title value="Codes representing body site for measuring body temperature"/> 
+	<status value="draft"/> 
+	<experimental value="false"/> 
+	<date value="2019-09-20T11:00:00+02:00"/> 
+	<publisher value="Helse Nord"/> 
+	<description value="Codes representing body site for measuring body temperature"/> 
+	<compose> 
+		<include> 
+			<system value="http://snomed.info/sct"/>
+			<concept> 
+				<code value="XX"/> 
+				<display value="Endetarm"/> 
+			</concept>
+			<concept> 
+				<code value="XX"/> 
+				<display value="Armhule"/> 
+			</concept>
+			<concept> 
+				<code value="XX"/> 
+				<display value="Øre"/> 
+			</concept>
+			<concept> 
+				<code value="XX"/> 
+				<display value="Panne"/> 
+			</concept>
+			<concept> 
+				<code value="XX"/> 
+				<display value="Munn"/> 
+			</concept>
+			<concept> 
+				<code value="XX"/> 
+				<display value="Nesesvelg"/> 
+			</concept>
+			<concept> 
+				<code value="XX"/> 
+				<display value="Urinblære"/> 
+			</concept>
+			<concept> 
+				<code value="XX"/> 
+				<display value="Intravaskulært"/> 
+			</concept>
+			<concept> 
+				<code value="XX"/> 
+				<display value="Hud"/> 
+			</concept>
+			<concept> 
+				<code value="XX"/> 
+				<display value="Skjede"/> 
+			</concept>
+			<concept> 
+				<code value="XX"/> 
+				<display value="Spiserør"/> 
+			</concept>
+			<concept> 
+				<code value="XX"/> 
+				<display value="Lyske"/> 
+			</concept>
+			<concept> 
+				<code value="XX"/> 
+				<display value="Tinning"/> 
+			</concept>
+		</include> 
+	</compose> 
+</ValueSet> 
