@@ -395,6 +395,141 @@
         <map value="N/A" />
       </mapping>
     </element>
+    <element id="Observation.extension:BodyExposure">
+      <path value="Observation.extension" />
+      <sliceName value="BodyExposure" />
+      <short value="Optional Extensions Element" />
+      <definition value="Optional Extension Element - found in all resources." />
+      <comment value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
+      <alias value="extensions" />
+      <alias value="user content" />
+      <min value="0" />
+      <max value="1" />
+      <base>
+        <path value="DomainResource.extension" />
+        <min value="0" />
+        <max value="*" />
+      </base>
+      <type>
+        <code value="Extension" />
+        <profile value="http://helse-nord.no/fhir/StructureDefinition/HNBodyExposureExtension" />
+      </type>
+      <condition value="ele-1" />
+      <constraint>
+        <key value="ele-1" />
+        <severity value="error" />
+        <human value="All FHIR elements must have a @value or children" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
+        <xpath value="@value|f:*|h:div" />
+        <source value="Element" />
+      </constraint>
+      <constraint>
+        <key value="ext-1" />
+        <severity value="error" />
+        <human value="Must have either extensions or value[x], not both" />
+        <expression value="extension.exists() != value.exists()" />
+        <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
+        <source value="Extension" />
+      </constraint>
+      <mapping>
+        <identity value="rim" />
+        <map value="n/a" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="N/A" />
+      </mapping>
+    </element>
+    <element id="Observation.extension:ActiveHeating">
+      <path value="Observation.extension" />
+      <sliceName value="ActiveHeating" />
+      <short value="Optional Extensions Element" />
+      <definition value="Optional Extension Element - found in all resources." />
+      <comment value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
+      <alias value="extensions" />
+      <alias value="user content" />
+      <min value="0" />
+      <max value="1" />
+      <base>
+        <path value="DomainResource.extension" />
+        <min value="0" />
+        <max value="*" />
+      </base>
+      <type>
+        <code value="Extension" />
+        <profile value="http://helse-nord.no/fhir/StructureDefinition/HNActiveHeatingExtension" />
+      </type>
+      <condition value="ele-1" />
+      <constraint>
+        <key value="ele-1" />
+        <severity value="error" />
+        <human value="All FHIR elements must have a @value or children" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
+        <xpath value="@value|f:*|h:div" />
+        <source value="Element" />
+      </constraint>
+      <constraint>
+        <key value="ext-1" />
+        <severity value="error" />
+        <human value="Must have either extensions or value[x], not both" />
+        <expression value="extension.exists() != value.exists()" />
+        <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
+        <source value="Extension" />
+      </constraint>
+      <mapping>
+        <identity value="rim" />
+        <map value="n/a" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="N/A" />
+      </mapping>
+    </element>
+    <element id="Observation.extension:DaysSinceMenstruationStart">
+      <path value="Observation.extension" />
+      <sliceName value="DaysSinceMenstruationStart" />
+      <short value="Optional Extensions Element" />
+      <definition value="Optional Extension Element - found in all resources." />
+      <comment value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
+      <alias value="extensions" />
+      <alias value="user content" />
+      <min value="0" />
+      <max value="1" />
+      <base>
+        <path value="DomainResource.extension" />
+        <min value="0" />
+        <max value="*" />
+      </base>
+      <type>
+        <code value="Extension" />
+        <profile value="http://helse-nord.no/fhir/StructureDefinition/HNDaysSinceMenstruationStart" />
+      </type>
+      <condition value="ele-1" />
+      <constraint>
+        <key value="ele-1" />
+        <severity value="error" />
+        <human value="All FHIR elements must have a @value or children" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
+        <xpath value="@value|f:*|h:div" />
+        <source value="Element" />
+      </constraint>
+      <constraint>
+        <key value="ext-1" />
+        <severity value="error" />
+        <human value="Must have either extensions or value[x], not both" />
+        <expression value="extension.exists() != value.exists()" />
+        <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
+        <source value="Extension" />
+      </constraint>
+      <mapping>
+        <identity value="rim" />
+        <map value="n/a" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="N/A" />
+      </mapping>
+    </element>
     <element id="Observation.modifierExtension">
       <path value="Observation.modifierExtension" />
       <slicing>
@@ -5835,7 +5970,10 @@
     <element id="Observation.value[x]">
       <path value="Observation.value[x]" />
       <slicing>
-        <rules value="open" />
+        <discriminator>
+          <type value="type" />
+          <path value="$this" />
+        </discriminator>
       </slicing>
       <short value="Vital Signs value are recorded using the Quantity data type. For supporting observations such as Cuff size could use other datatypes such as CodeableConcept." />
       <definition value="Vital Signs value are recorded using the Quantity data type. For supporting observations such as Cuff size could use other datatypes such as CodeableConcept." />
@@ -6486,9 +6624,9 @@
         <source value="Element" />
       </constraint>
       <binding>
-        <strength value="example" />
-        <description value="Codes describing anatomical locations. May include laterality." />
-        <valueSet value="http://hl7.org/fhir/ValueSet/body-site" />
+        <strength value="required" />
+        <description value="Codes describing anatomical locations for measuring body temperature." />
+        <valueSet value="http://helse-nord.no/fhir/ValueSet/HNBodyTempBodySiteValueSet" />
       </binding>
       <mapping>
         <identity value="rim" />
@@ -7801,6 +7939,46 @@
     </element>
   </snapshot>
   <differential>
+    <element id="Observation.extension">
+      <path value="Observation.extension" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="url" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+    </element>
+    <element id="Observation.extension:BodyExposure">
+      <path value="Observation.extension" />
+      <sliceName value="BodyExposure" />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://helse-nord.no/fhir/StructureDefinition/HNBodyExposureExtension" />
+      </type>
+    </element>
+    <element id="Observation.extension:ActiveHeating">
+      <path value="Observation.extension" />
+      <sliceName value="ActiveHeating" />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://helse-nord.no/fhir/StructureDefinition/HNActiveHeatingExtension" />
+      </type>
+    </element>
+    <element id="Observation.extension:DaysSinceMenstruationStart">
+      <path value="Observation.extension" />
+      <sliceName value="DaysSinceMenstruationStart" />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://helse-nord.no/fhir/StructureDefinition/HNDaysSinceMenstruationStart" />
+      </type>
+    </element>
     <element id="Observation.subject.identifier">
       <path value="Observation.subject.identifier" />
       <slicing>
@@ -7865,11 +8043,13 @@
       <path value="Observation.performer.identifier.system" />
       <fixedUri value="urn:oid:2.16.578.1.12.4.1.4.102" />
     </element>
-    <element id="Observation.value[x]">
-      <path value="Observation.value[x]" />
-      <slicing>
-        <rules value="open" />
-      </slicing>
+    <element id="Observation.bodySite">
+      <path value="Observation.bodySite" />
+      <binding>
+        <strength value="required" />
+        <description value="Codes describing anatomical locations for measuring body temperature." />
+        <valueSet value="http://helse-nord.no/fhir/ValueSet/HNBodyTempBodySiteValueSet" />
+      </binding>
     </element>
   </differential>
 </StructureDefinition>
