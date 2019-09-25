@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+	<id value="HNBloodPressureBodySiteValueSet"/> 
+	<meta> 
+		<lastUpdated value="2018-12-27T22:37:54.724+11:00"/> 
+		<profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/> 
+	</meta> 
+	<text> 
+		<status value="generated"/> 
+		<div xmlns="http://www.w3.org/1999/xhtml">
+			<h2>HNBloodPressureBodySiteValueSet</h2> 
+			<div> 
+				<p>Codes used to represent body site for measuring blood pressure.</p> 
+			</div>  
+		</div> 
+	</text> 
+	<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+		<valueCode value="fhir"/> 
+	</extension> 
+	<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+		<valueCode value="draft"/> 
+	</extension> 
+	<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+		<valueInteger value="1"/> 
+	</extension> 
+	<url value="http://helse-nord.no/fhir/ValueSet/HNBloodPressureBodySiteValueSet"/> 
+	<identifier> 
+		<system value="urn:ietf:rfc:3986"/> 
+		<value value="urn:oid:2.16.840.1.113883.4.642.3.316"/> 
+	</identifier> 
+	<version value="4.0.0"/> 
+	<name value="HNBloodPressureBodySiteValueSet"/> 
+	<title value="Codes representing body site for measuring blood pressure"/> 
+	<status value="draft"/> 
+	<experimental value="false"/> 
+	<date value="2019-09-20T11:00:00+02:00"/> 
+	<publisher value="Helse Nord"/> 
+	<description value="Codes representing body site for measuring blood pressure"/> 
+	<compose> 
+		<include> 
+			<system value="http://snomed.info/sct"/>
+			<concept> 
+				<code value="XX"/> 
+				<display value="Overarm, høyre"/> 
+			</concept>
+			<concept> 
+				<code value="XX"/> 
+				<display value="Overarm, venstre"/> 
+			</concept>
+			<concept> 
+				<code value="XX"/> 
+				<display value="Lår, høyre"/> 
+			</concept>
+			<concept> 
+				<code value="XX"/> 
+				<display value="Lår, venstre"/> 
+			</concept>
+			<concept> 
+				<code value="XX"/> 
+				<display value="Håndledd, høyre"/> 
+			</concept>
+			<concept> 
+				<code value="XX"/> 
+				<display value="Håndledd, venstre"/> 
+			</concept>
+			<concept> 
+				<code value="XX"/> 
+				<display value="Ankel, høyre"/> 
+			</concept>
+			<concept> 
+				<code value="XX"/> 
+				<display value="Ankel, vensre"/> 
+			</concept>
+			<concept> 
+				<code value="XX"/> 
+				<display value="Finger"/> 
+			</concept>
+			<concept> 
+				<code value="XX"/> 
+				<display value="Tå"/> 
+			</concept>
+			<concept> 
+				<code value="XX"/> 
+				<display value="Fotrygg"/> 
+			</concept>
+			<concept> 
+				<code value="XX"/> 
+				<display value="Intra-arteriellt"/> 
+			</concept>
+		</include> 
+	</compose> 
+</ValueSet> 
