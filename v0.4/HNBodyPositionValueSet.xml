@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="HNBodyPositionValueSet" />
+  <meta>
+    <lastUpdated value="2018-12-27T22:37:54.724+11:00" />
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset" />
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="oo" />
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft" />
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1" />
+  </extension>
+  <url value="http://helse-nord.no/fhir/ValueSet/HNBodyPositionValueSet" />
+  <version value="4.0.0" />
+ <version value="4.0.0" />
+	<name value="HNBodyPositionValueSet"/>
+	<title value="Codes representing Body Position"/>
+	<status value="draft"/>
+	<experimental value="false"/>
+	<date value="2019-09-27T11:00:00+02:00"/>
+	<publisher value="Helse Nord"/>
+	<description value="Codes representing Body Position"/>
+	<compose>
+    <include>
+      <system value="http://snomed.info/sct" />
+      <concept>
+        <code value="102538003" />
+        <display value="Lying position" />
+      </concept>
+      <concept>
+        <code value="33586001" />
+        <display value="Sitting position" />
+      </concept>
+      <concept>
+        <code value="10904000" />
+        <display value="Standing position" />
+      </concept>
+      <concept>
+        <code value="1*1" />
+        <display value="Recumbent" />
+      </concept>
+      <concept>
+        <code value="1*2" />
+        <display value="Landscape" />
+      </concept>
+      <concept>
+        <code value="1*3" />
+        <display value="Landscape leaning to the left" />
+      </concept>
+      <filter>
+        <property value="concept" />
+        <op value="is-a" />
+        <value value="424724000" />
+      </filter>
+    </include>
+  </compose>
+</ValueSet>

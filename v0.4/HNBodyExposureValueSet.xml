@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+	<id value="HNBodyExposureValueSet"/> 
+	<meta> 
+		<lastUpdated value="2018-12-27T22:37:54.724+11:00"/> 
+		<profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/> 
+	</meta> 
+	<text> 
+		<status value="generated"/> 
+		<div xmlns="http://www.w3.org/1999/xhtml">
+			<h2>HNBodyExposureValueSet</h2> 
+			<div> 
+				<p>Codes used to represent level of body exposure.</p> 
+			</div>  
+		</div> 
+	</text> 
+	<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+		<valueCode value="fhir"/> 
+	</extension> 
+	<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+		<valueCode value="draft"/> 
+	</extension> 
+	<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+		<valueInteger value="1"/> 
+	</extension> 
+	<url value="http://helse-nord.no/fhir/ValueSet/HNBodyExposureValueSet"/> 
+	<identifier> 
+		<system value="urn:ietf:rfc:3986"/> 
+		<value value="urn:oid:2.16.840.1.113883.4.642.3.316"/> 
+	</identifier> 
+	<version value="4.0.0"/> 
+	<name value="HNBodyExposureValueSet"/> 
+	<title value="Codes representing level of body exposure (measuring BodyTemp)"/> 
+	<status value="draft"/> 
+	<experimental value="false"/> 
+	<date value="2019-09-20T11:00:00+02:00"/> 
+	<publisher value="Helse Nord"/> 
+	<description value="Codes representing level of body exposure (measuring BodyTemp)"/> 
+	<compose> 
+		<include> 
+			<system value="http://snomed.info/sct"/>
+			<concept> 
+				<code value="XX"/> 
+				<display value="Naken"/> 
+			</concept>
+			<concept> 
+				<code value="XX"/> 
+				<display value="Redusert påkledning/tildekking"/> 
+			</concept>
+			<concept> 
+				<code value="XX"/> 
+				<display value="Passende påkledning/tildekking"/> 
+			</concept>
+			<concept> 
+				<code value="XX"/> 
+				<display value="Økt påkledning/tildekking"/> 
+			</concept>
+		</include> 
+	</compose> 
+</ValueSet> 
