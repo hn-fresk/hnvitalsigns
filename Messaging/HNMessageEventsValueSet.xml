@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+	<id value="HNMessageEvents"/> 
+	<meta> 
+		<lastUpdated value="2018-12-27T22:37:54.724+11:00"/> 
+		<profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/> 
+	</meta> 
+	<text> 
+		<status value="generated"/> 
+		<div xmlns="http://www.w3.org/1999/xhtml">
+			<h2> HNMessageEvents</h2> 
+			<div> 
+				<p>Message events available on HN FHIR Messaging platform</p> 
+			</div> 
+		</div> 
+	</text> 
+	<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+		<valueCode value="fhir"/> 
+	</extension> 
+	<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+		<valueCode value="normative"/> 
+	</extension> 
+	<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+		<valueCode value="4.0.0"/> 
+	</extension> 
+	<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+		<valueInteger value="5"/> 
+	</extension> 
+	<url value="http://helse-nord.no/fhir/ValueSet/HNMessageEvents"/> 
+	<identifier> 
+		<system value="urn:ietf:rfc:3986"/> 
+		<value value="urn:oid:2.16.840.1.113883.4.642.3.26"/> 
+	</identifier> 
+	<version value="4.0.0"/> 
+	<name value="HNMessageEvents"/> 
+	<title value="HNMessageEvents"/> 
+	<status value="active"/> 
+	<experimental value="true"/> 
+	<date value="2018-12-27T22:37:54+11:00"/> 
+	<publisher value="HN"/> 
+	<description value="Message events available on HN FHIR Messaging platform"/> 
+	<immutable value="true"/> 
+	<compose> 
+		<system value="http://helse-nord.no/messageevents"/>
+		<concept> 
+			<code value="aeeb7a05-0114-4c0c-a5ab-0db846c37712"/> 
+			<display value="Vital parameter: HNBodyWeight"/> 
+		</concept>
+		<concept> 
+			<code value="6ffba61d-294a-4595-8c28-206c09bf105b"/> 
+			<display value="Vital parameter: HNBodyHeight"/> 
+		</concept>
+		<concept> 
+			<code value="7bcf9128-a56e-4587-a1e1-84d061e98dbb"/> 
+			<display value="Vital parameter: HNBodyTemp"/> 
+		</concept>
+		<concept> 
+			<code value="c0d66c2d-9f6a-47a7-abf2-a9d9382515fd"/> 
+			<display value="Vital parameter: HNBloodPressure"/> 
+		</concept>
+		<concept> 
+			<code value="098a6ba3-253b-4314-b082-5de1f7224afb"/> 
+			<display value="Vital parameter: HNHeartRate"/> 
+		</concept>
+		<concept> 
+			<code value="117ce3a5-be82-4c4f-8802-2a37e849e5f2"/> 
+			<display value="Vital parameter: HNRespRate"/> 
+		</concept>
+		<concept> 
+			<code value="d2beea6b-29bf-47e0-be79-bb86c51e7829"/> 
+			<display value="Vital parameter: HNOxyGenSat"/> 
+		</concept>
+	</compose> 
+</ValueSet>
