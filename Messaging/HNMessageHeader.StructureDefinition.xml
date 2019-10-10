@@ -3415,7 +3415,7 @@
       <path value="MessageHeader.focus.reference" />
       <short value="Literal reference, Relative, internal or absolute URL" />
       <definition value="A reference to a location at which the other resource is found. The reference may be a relative reference, in which case it is relative to the service base URL, or an absolute URL that resolves to the location where the resource is found. The reference may be version specific or not. If the reference is not to a FHIR RESTful server, then it should be assumed to be version specific. Internal fragment references (start with '#') refer to contained resources." />
-      <comment value="Referer til entry i bundle. F.eks 'http://helse-nord/fhir/hnbloodpressure/&lt;id&gt;'" />
+      <comment value="Referer til entry i bundle. F.eks 'http://helse-nord/fhir/hnbloodpressure/&lt;id&gt;'. Evt url til kildesystemet. Poenget er vel mer å unikt finne referansen i bundlen enn at url skal gå mot et faktisk fungerende endepunkt. I så fall må en evt tjeneste gå mot alle potensielle inneholder f.eks blodtrykk (om det er det denne hendelsen handler om). I og med at denne meldingen sendes så er det kun kildesystemet som inneholder blodtrykket i sendeøyeblikk, så å slå dette opp i fagsystem X (ikke kilden) vil ikke fungere." />
       <min value="1" />
       <max value="1" />
       <base>
@@ -4106,7 +4106,7 @@
     </element>
     <element id="MessageHeader.focus.reference">
       <path value="MessageHeader.focus.reference" />
-      <comment value="Referer til entry i bundle. F.eks 'http://helse-nord/fhir/hnbloodpressure/&lt;id&gt;'" />
+      <comment value="Referer til entry i bundle. F.eks 'http://helse-nord/fhir/hnbloodpressure/&lt;id&gt;'. Evt url til kildesystemet. Poenget er vel mer å unikt finne referansen i bundlen enn at url skal gå mot et faktisk fungerende endepunkt. I så fall må en evt tjeneste gå mot alle potensielle inneholder f.eks blodtrykk (om det er det denne hendelsen handler om). I og med at denne meldingen sendes så er det kun kildesystemet som inneholder blodtrykket i sendeøyeblikk, så å slå dette opp i fagsystem X (ikke kilden) vil ikke fungere." />
       <min value="1" />
     </element>
     <element id="MessageHeader.focus.type">
