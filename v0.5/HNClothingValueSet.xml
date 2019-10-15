@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="HNClothingValueset" />
+  <meta>
+    <lastUpdated value="2018-12-27T22:37:54.724+11:00" />
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset" />
+  </meta>
+  <text>
+    <status value="generated" />
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <h2> SNOMED CT Body Structures</h2>
+      <div>
+        <p> This value set includes all codes from 
+          <a href="http://snomed.info/sct">SNOMED CT</a>  where concept is-a 424724000 424724000 |Body position for blood pressure measurement (observable entity).
+        </p>
+      </div>
+      <p>
+        <b> Copyright Statement:</b>  This resource includes content from SNOMED Clinical TermsÂ® (SNOMED CTÂ®) which is copyright
+         of the International Health Terminology Standards Development Organisation (IHTSDO). Implementers
+         of these specifications must have the appropriate SNOMED CT Affiliate license - for more
+         information contact http://www.snomed.org/snomed-ct/get-snomed-ct or info@snomed.org
+      </p>
+      <p> This value set includes codes from the following code systems:</p>
+      <ul>
+        <li> Include codes from 
+          <a href="http://www.snomed.org/"><code> http://snomed.info/sct</code></a>  where concept  is-a  248159006 |Clothing State (observable entity)
+        </li>
+      </ul>
+    </div>
+  </text>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="oo" />
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft" />
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1" />
+  </extension>
+  <url value="http://helse-nord.no/fhir/ValueSet/HNClothingValueSet" />
+  <version value="4.0.0" />
+  <name value="HNClothingValueSet" />
+  <title value="Codes representing level of clothing" />
+  <status value="draft" />
+  <experimental value="false" />
+  <date value="2018-12-27T22:37:54+11:00" />
+  <publisher value="Helse Nord" />
+  <description value="Codes representing level of clothing" />
+  <compose>
+    <include>
+      <system value="http://snomed.info/sct" />
+      <concept>
+        <code value="1" />
+        <display value="Naken" />
+      </concept>
+      <concept>
+        <code value="2" />
+        <display value="Lette klær / undertøy" />
+      </concept>
+      <concept>
+        <code value="3" />
+        <display value="Fullt påkledd uten sko" />
+      </concept>
+      <concept>
+        <code value="4" />
+        <display value="Fullt påkledd inklusive sko" />
+      </concept>
+      <concept>
+        <code value="5" />
+        <display value="Bleie" />
+      </concept>
+      <filter>
+        <property value="concept" />
+        <op value="is-a" />
+        <value value="248159006" />
+      </filter>
+    </include>
+  </compose>
+</ValueSet>

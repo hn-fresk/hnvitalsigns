@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <url value="http://helse-nord.no/fhir/StructureDefinition/ObservationSubjectReference" />
+  <name value="ObservationSubjectReference" />
+  <status value="draft" />
+  <fhirVersion value="4.0.0" />
+  <mapping>
+    <identity value="rim" />
+    <uri value="http://hl7.org/v3" />
+    <name value="RIM Mapping" />
+  </mapping>
+  <kind value="complex-type" />
+  <abstract value="false" />
+  <type value="Reference" />
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Reference" />
+  <derivation value="constraint" />
+  <differential>
+    <element id="Reference.reference">
+      <path value="Reference.reference" />
+      <min value="1" />
+    </element>
+    <element id="Reference.type">
+      <path value="Reference.type" />
+      <max value="0" />
+    </element>
+    <element id="Reference.identifier">
+      <path value="Reference.identifier" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="system" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+    </element>
+    <element id="Reference.identifier:FNR">
+      <path value="Reference.identifier" />
+      <sliceName value="FNR" />
+      <short value="Identification of the Norwegian FNR" />
+      <definition value="Fødselsnummer for the patient. Fødselsnummer as one of the possible patient identifier, should at least be sent unless there is a reason not to. Reasons for not sending the Fødselsnummer include but are not limited to, research and apps without a contract for processing data.&#xD;&#xA;&#xD;&#xA;Multiple FNR can exist for a person. If several FNR is provided the time period that each identifier is valid should be provided. No information about period is required when only one FNR is provided." />
+    </element>
+    <element id="Reference.identifier:FNR.use">
+      <path value="Reference.identifier.use" />
+      <max value="0" />
+    </element>
+    <element id="Reference.identifier:FNR.type">
+      <path value="Reference.identifier.type" />
+      <max value="0" />
+    </element>
+    <element id="Reference.identifier:FNR.system">
+      <path value="Reference.identifier.system" />
+      <min value="1" />
+      <fixedUri value="urn:oid:2.16.578.1.12.4.1.4.1" />
+    </element>
+    <element id="Reference.identifier:FNR.value">
+      <path value="Reference.identifier.value" />
+      <short value="The Norwegian Fødselsnummer" />
+      <min value="1" />
+    </element>
+    <element id="Reference.identifier:FNR.period">
+      <path value="Reference.identifier.period" />
+      <max value="0" />
+    </element>
+    <element id="Reference.identifier:FNR.assigner">
+      <path value="Reference.identifier.assigner" />
+      <max value="0" />
+    </element>
+    <element id="Reference.identifier:DNR">
+      <path value="Reference.identifier" />
+      <sliceName value="DNR" />
+      <short value="The identification of the D-nummer" />
+      <definition value="The D-nummer of the patient. (assigned by the norwegian Skatteetaten)" />
+    </element>
+    <element id="Reference.identifier:DNR.use">
+      <path value="Reference.identifier.use" />
+      <max value="0" />
+    </element>
+    <element id="Reference.identifier:DNR.type">
+      <path value="Reference.identifier.type" />
+      <max value="0" />
+    </element>
+    <element id="Reference.identifier:DNR.system">
+      <path value="Reference.identifier.system" />
+      <short value="The identification of the Norwegian D-nummer" />
+      <definition value="The identification of the Norwegian D-nummer" />
+      <min value="1" />
+      <fixedUri value="urn:oid:2.16.578.1.12.4.1.4.2" />
+    </element>
+    <element id="Reference.identifier:DNR.value">
+      <path value="Reference.identifier.value" />
+      <definition value="The actual Norwegian D-nummer" />
+      <min value="1" />
+    </element>
+    <element id="Reference.identifier:DNR.period">
+      <path value="Reference.identifier.period" />
+      <max value="0" />
+    </element>
+    <element id="Reference.identifier:DNR.assigner">
+      <path value="Reference.identifier.assigner" />
+      <max value="0" />
+    </element>
+    <element id="Reference.identifier:HNR">
+      <path value="Reference.identifier" />
+      <sliceName value="HNR" />
+      <short value="A locally assigned H-nummer" />
+      <definition value="A locally assigned H-nummer. If this identifier is used, information about the assigner is mandatory." />
+    </element>
+    <element id="Reference.identifier:HNR.use">
+      <path value="Reference.identifier.use" />
+      <max value="0" />
+    </element>
+    <element id="Reference.identifier:HNR.type">
+      <path value="Reference.identifier.type" />
+      <max value="0" />
+    </element>
+    <element id="Reference.identifier:HNR.system">
+      <path value="Reference.identifier.system" />
+      <fixedUri value="HNR" />
+    </element>
+    <element id="Reference.identifier:HNR.value">
+      <path value="Reference.identifier.value" />
+      <definition value="The actual Hjelpenummer.&#xD;&#xA;&#xD;&#xA;The portion of the identifier typically relevant to the user and which is unique within the context of the system." />
+    </element>
+    <element id="Reference.identifier:HNR.period">
+      <path value="Reference.identifier.period" />
+      <max value="0" />
+    </element>
+    <element id="Reference.identifier:HNR.assigner">
+      <path value="Reference.identifier.assigner" />
+      <definition value="Assigner is mandatory for localy assigne Hjelpenummer.&#xD;&#xA;&#xD;&#xA;Organization that issued/manages the identifier." />
+      <min value="1" />
+    </element>
+  </differential>
+</StructureDefinition>
