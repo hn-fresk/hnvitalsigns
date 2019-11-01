@@ -172,7 +172,7 @@
     <element id="Reference.type">
       <path value="Reference.type" />
       <short value="Patient" />
-      <definition value="&quot;Patient&quot; is a reference to http://hl7.org/fhir/StructureDefinition/Patient. " />
+      <definition value="&quot;Patient&quot; is a reference to http://hl7.org/fhir/StructureDefinition/Patient." />
       <comment value="This element is used to indicate the type of  the target of the reference. This may be used which ever of the other elements are populated (or not). In some cases, the type of the target may be determined by inspection of the reference (e.g. a RESTful URL) or by resolving the target of the reference; if both the type and a reference is provided, the reference SHALL resolve to a resource of the same type as that specified." />
       <min value="0" />
       <max value="1" />
@@ -184,6 +184,7 @@
       <type>
         <code value="uri" />
       </type>
+      <fixedUri value="Patient" />
       <condition value="ele-1" />
       <constraint>
         <key value="ele-1" />
@@ -2048,7 +2049,8 @@
     <element id="Reference.type">
       <path value="Reference.type" />
       <short value="Patient" />
-      <definition value="&quot;Patient&quot; is a reference to http://hl7.org/fhir/StructureDefinition/Patient. " />
+      <definition value="&quot;Patient&quot; is a reference to http://hl7.org/fhir/StructureDefinition/Patient." />
+      <fixedUri value="Patient" />
     </element>
     <element id="Reference.identifier">
       <path value="Reference.identifier" />

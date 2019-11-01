@@ -183,8 +183,6 @@
       </base>
       <type>
         <code value="uri" />
-        <profile value="http://hl7.no/fhir/StructureDefinition/no-basis-Practitioner" />
-        <profile value="http://hl7.no/fhir/StructureDefinition/no-basis-PractitionerRole" />
       </type>
       <condition value="ele-1" />
       <constraint>
@@ -1610,14 +1608,6 @@
     </element>
   </snapshot>
   <differential>
-    <element id="Reference.type">
-      <path value="Reference.type" />
-      <type>
-        <code value="uri" />
-        <profile value="http://hl7.no/fhir/StructureDefinition/no-basis-Practitioner" />
-        <profile value="http://hl7.no/fhir/StructureDefinition/no-basis-PractitionerRole" />
-      </type>
-    </element>
     <element id="Reference.identifier">
       <path value="Reference.identifier" />
       <slicing>
