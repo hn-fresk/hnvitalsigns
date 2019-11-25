@@ -412,7 +412,7 @@
       </base>
       <type>
         <code value="Extension" />
-        <profile value="http://hl7.no/fhir/StructureDefinition/no-bodyposition-extention" />
+        <profile value="http://hl7.no/fhir/StructureDefinition/no-bodyposition-extension" />
       </type>
       <condition value="ele-1" />
       <constraint>
@@ -13890,7 +13890,7 @@
       <sliceName value="bodyPosition" />
       <type>
         <code value="Extension" />
-        <profile value="http://hl7.no/fhir/StructureDefinition/no-bodyposition-extention" />
+        <profile value="http://hl7.no/fhir/StructureDefinition/no-bodyposition-extension" />
       </type>
     </element>
     <element id="Observation.subject">

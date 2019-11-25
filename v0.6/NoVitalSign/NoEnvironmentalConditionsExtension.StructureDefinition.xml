@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
-  <url value="http://hl7.no/fhir/StructureDefinition/no-heatingdevice-extension" />
-  <name value="NoHeatingDeviceExtension" />
+  <url value="http://hl7.no/fhir/StructureDefinition/no-environmentalconditions-Extension" />
+  <name value="NoEnvironmentalConditionsExtension" />
   <status value="draft" />
   <fhirVersion value="4.0.0" />
   <kind value="complex-type" />
@@ -161,7 +161,7 @@
           </extension>
         </code>
       </type>
-      <fixedUri value="http://hl7.no/fhir/StructureDefinition/no-heatingdevice-extension" />
+      <fixedUri value="http://hl7.no/fhir/StructureDefinition/no-environmentalconditions-extension" />
       <mapping>
         <identity value="rim" />
         <map value="N/A" />
@@ -204,7 +204,7 @@
   <differential>
     <element id="Extension.url">
       <path value="Extension.url" />
-      <fixedUri value="http://hl7.no/fhir/StructureDefinition/no-heatingdevice-extension" />
+      <fixedUri value="http://hl7.no/fhir/StructureDefinition/no-environmentalconditions-extension" />
     </element>
     <element id="Extension.value[x]">
       <path value="Extension.value[x]" />

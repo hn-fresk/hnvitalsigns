@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
-  <url value="http://hl7.no/fhir/StructureDefinition/no-heatingdevice-extension" />
-  <name value="NoHeatingDeviceExtension" />
+  <url value="http://hl7.no/fhir/StructureDefinition/no-clinicaldescription-extension" />
+  <name value="NoClinicalDescriptionExtension" />
   <status value="draft" />
   <fhirVersion value="4.0.0" />
   <kind value="complex-type" />
@@ -161,7 +161,7 @@
           </extension>
         </code>
       </type>
-      <fixedUri value="http://hl7.no/fhir/StructureDefinition/no-heatingdevice-extension" />
+      <fixedUri value="http://hl7.no/fhir/StructureDefinition/no-clinicaldescription-extension" />
       <mapping>
         <identity value="rim" />
         <map value="N/A" />
@@ -180,7 +180,7 @@
         <max value="1" />
       </base>
       <type>
-        <code value="Reference" />
+        <code value="Annotation" />
       </type>
       <condition value="ele-1" />
       <constraint>
@@ -204,12 +204,12 @@
   <differential>
     <element id="Extension.url">
       <path value="Extension.url" />
-      <fixedUri value="http://hl7.no/fhir/StructureDefinition/no-heatingdevice-extension" />
+      <fixedUri value="http://hl7.no/fhir/StructureDefinition/no-clinicaldescription-extension" />
     </element>
     <element id="Extension.value[x]">
       <path value="Extension.value[x]" />
       <type>
-        <code value="Reference" />
+        <code value="Annotation" />
       </type>
     </element>
   </differential>
