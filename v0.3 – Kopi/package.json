@@ -1,0 +1,10 @@
+{
+  "name": "v",
+  "version": "0.1.0",
+  "description": "Put a description here",
+  "dependencies": {
+    "simplifier.core.r4.profiles": "4.0.0"
+  },
+  "devDependencies": null,
+  "canonicals": null
+}
