@@ -1,0 +1,11 @@
+{
+  "name": "Profiles",
+  "version": "0.1.0",
+  "description": "Put a description here",
+  "dependencies": {
+    "simplifier.core.r4": "4.0.1",
+    "hl7.fhir.no.basis": "2.0.11"
+  },
+  "devDependencies": null,
+  "canonicals": null
+}
