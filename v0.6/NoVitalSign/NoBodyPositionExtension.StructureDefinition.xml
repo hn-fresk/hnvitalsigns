@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
-  <url value="http://hl7.no/fhir/StructureDefinition/no-bodyposition-extension" />
-  <name value="NoBodyPositionExtension" />
+  <url value="http://hl7.no/fhir/StructureDefinition/no-bodyposition-extension2" />
+  <name value="NoBodyPositionExtension2" />
   <status value="draft" />
   <fhirVersion value="4.0.0" />
   <kind value="complex-type" />
@@ -205,7 +205,7 @@
   <differential>
     <element id="Extension.url">
       <path value="Extension.url" />
-      <fixedUri value="http://hl7.no/fhir/StructureDefinition/no-bodyposition-extension" />
+      <fixedUri value="http://hl7.no/fhir/StructureDefinition/no-bodyposition-extension2" />
     </element>
     <element id="Extension.value[x]">
       <path value="Extension.value[x]" />
