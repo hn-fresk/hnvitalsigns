@@ -3,7 +3,7 @@
   <url value="http://helse-nord.no/fhir/StructureDefinition/HNMessageHeader" />
   <name value="HNMessageHeader" />
   <status value="draft" />
-  <fhirVersion value="4.0.0" />
+  <fhirVersion value="4.0.1" />
   <mapping>
     <identity value="v2" />
     <uri value="http://hl7.org/v2" />
@@ -42,7 +42,7 @@
         <human value="If the resource is contained in another resource, it SHALL NOT contain nested Resources" />
         <expression value="contained.contained.empty()" />
         <xpath value="not(parent::f:contained and f:contained)" />
-        <source value="DomainResource" />
+        <source value="http://hl7.org/fhir/StructureDefinition/DomainResource" />
       </constraint>
       <constraint>
         <key value="dom-4" />
@@ -50,15 +50,15 @@
         <human value="If a resource is contained in another resource, it SHALL NOT have a meta.versionId or a meta.lastUpdated" />
         <expression value="contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()" />
         <xpath value="not(exists(f:contained/*/f:meta/f:versionId)) and not(exists(f:contained/*/f:meta/f:lastUpdated))" />
-        <source value="DomainResource" />
+        <source value="http://hl7.org/fhir/StructureDefinition/DomainResource" />
       </constraint>
       <constraint>
         <key value="dom-3" />
         <severity value="error" />
         <human value="If the resource is contained in another resource, it SHALL be referred to from elsewhere in the resource or SHALL refer to the containing resource" />
         <expression value="contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()" />
-        <xpath value="not(exists(for $contained in f:contained return $contained[not(parent::*/descendant::f:reference/@value=concat('#', $contained/*/id/@value) or descendant::f:reference[@value='#'])]))" />
-        <source value="DomainResource" />
+        <xpath value="not(exists(for $id in f:contained/*/f:id/@value return $contained[not(parent::*/descendant::f:reference/@value=concat('#', $contained/*/id/@value) or descendant::f:reference[@value='#'])]))" />
+        <source value="http://hl7.org/fhir/StructureDefinition/DomainResource" />
       </constraint>
       <constraint>
         <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice">
@@ -70,9 +70,9 @@
         <key value="dom-6" />
         <severity value="warning" />
         <human value="A resource should have narrative for robust management" />
-        <expression value="text.div.exists()" />
+        <expression value="text.`div`.exists()" />
         <xpath value="exists(f:text/h:div)" />
-        <source value="DomainResource" />
+        <source value="http://hl7.org/fhir/StructureDefinition/DomainResource" />
       </constraint>
       <constraint>
         <key value="dom-5" />
@@ -80,7 +80,7 @@
         <human value="If a resource is contained in another resource, it SHALL NOT have a security label" />
         <expression value="contained.meta.security.empty()" />
         <xpath value="not(exists(f:contained/*/f:meta/f:security))" />
-        <source value="DomainResource" />
+        <source value="http://hl7.org/fhir/StructureDefinition/DomainResource" />
       </constraint>
       <mapping>
         <identity value="rim" />
@@ -108,24 +108,20 @@
         <max value="1" />
       </base>
       <type>
-        <code value="id" />
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueUrl value="string" />
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String" />
       </type>
-      <condition value="ele-1" />
-      <constraint>
-        <key value="ele-1" />
-        <severity value="error" />
-        <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() or (children().count() &gt; id.count())" />
-        <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
-      </constraint>
       <isSummary value="true" />
-      <mapping>
-        <identity value="rim" />
-        <map value="n/a" />
-      </mapping>
     </element>
     <element id="MessageHeader.meta">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
       <path value="MessageHeader.meta" />
       <short value="Metadata about the resource" />
       <definition value="The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource." />
@@ -146,7 +142,7 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <isSummary value="true" />
       <mapping>
@@ -180,7 +176,7 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <isModifier value="true" />
       <isModifierReason value="This element is labeled as a modifier because the implicit rules may provide additional knowledge about the resource that modifies it's meaning or interpretation" />
@@ -212,9 +208,18 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <binding>
+        <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet">
+          <valueCanonical value="http://hl7.org/fhir/ValueSet/all-languages" />
+        </extension>
+        <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName">
+          <valueString value="Language" />
+        </extension>
+        <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-isCommonBinding">
+          <valueBoolean value="true" />
+        </extension>
         <strength value="preferred" />
         <description value="A human language." />
         <valueSet value="http://hl7.org/fhir/ValueSet/languages" />
@@ -225,6 +230,12 @@
       </mapping>
     </element>
     <element id="MessageHeader.text">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
       <path value="MessageHeader.text" />
       <short value="Text summary of the resource, for human interpretation" />
       <definition value="A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it &quot;clinically safe&quot; for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety." />
@@ -250,7 +261,7 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <mapping>
         <identity value="rim" />
@@ -293,6 +304,12 @@
       </mapping>
     </element>
     <element id="MessageHeader.extension">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
       <path value="MessageHeader.extension" />
       <slicing>
         <discriminator>
@@ -324,7 +341,7 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <constraint>
         <key value="ext-1" />
@@ -332,7 +349,7 @@
         <human value="Must have either extensions or value[x], not both" />
         <expression value="extension.exists() != value.exists()" />
         <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
-        <source value="Extension" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <mapping>
         <identity value="rim" />
@@ -344,6 +361,12 @@
       </mapping>
     </element>
     <element id="MessageHeader.modifierExtension">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
       <path value="MessageHeader.modifierExtension" />
       <slicing>
         <discriminator>
@@ -376,7 +399,7 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <constraint>
         <key value="ext-1" />
@@ -384,7 +407,7 @@
         <human value="Must have either extensions or value[x], not both" />
         <expression value="extension.exists() != value.exists()" />
         <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
-        <source value="Extension" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <isModifier value="true" />
       <isModifierReason value="Modifier extensions are expected to modify the meaning or interpretation of the resource that contains them" />
@@ -398,6 +421,12 @@
       </mapping>
     </element>
     <element id="MessageHeader.event[x]">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
       <path value="MessageHeader.event[x]" />
       <short value="Code for the event this message represents or link to event definition" />
       <definition value="Code that identifies the event this message represents and connects it with its definition. Events defined as part of the FHIR specification have the system value &quot;http://terminology.hl7.org/CodeSystem/message-events&quot;.  Alternatively uri to the EventDefinition." />
@@ -423,13 +452,13 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <isSummary value="true" />
       <binding>
         <strength value="required" />
         <description value="One of the message events defined as part of this version of FHIR." />
-        <valueSet value="http://helse-nord.no/fhir/ValueSet/HNMessageEvents" />
+        <valueSet value="http://helsenord.no/fhir/ValueSet/HNMessageEventsValueSet" />
       </binding>
       <mapping>
         <identity value="rim" />
@@ -461,13 +490,22 @@
       </mapping>
     </element>
     <element id="MessageHeader.destination">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name">
+        <valueString value="MessageDestination" />
+      </extension>
       <path value="MessageHeader.destination" />
       <short value="Message destination application(s)" />
       <definition value="The destination application which the message is intended for." />
       <comment value="There SHOULD be at least one destination, but in some circumstances, the source system is unaware of any particular destination system." />
       <requirements value="Indicates where message is to be sent for routing purposes.  Allows verification of &quot;am I the intended recipient&quot;." />
       <min value="0" />
-      <max value="*" />
+      <max value="0" />
       <base>
         <path value="MessageHeader.destination" />
         <min value="0" />
@@ -483,7 +521,7 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <isSummary value="true" />
       <mapping>
@@ -516,17 +554,10 @@
         <max value="1" />
       </base>
       <type>
-        <code>
-          <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type">
-            <valueString value="string" />
-          </extension>
-          <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type">
-            <valueString value="xsd:string" />
-          </extension>
-          <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type">
-            <valueString value="xsd:string" />
-          </extension>
-        </code>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueUrl value="string" />
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String" />
       </type>
       <mapping>
         <identity value="rim" />
@@ -534,6 +565,12 @@
       </mapping>
     </element>
     <element id="MessageHeader.destination.extension">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
       <path value="MessageHeader.destination.extension" />
       <slicing>
         <discriminator>
@@ -565,7 +602,7 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <constraint>
         <key value="ext-1" />
@@ -573,7 +610,7 @@
         <human value="Must have either extensions or value[x], not both" />
         <expression value="extension.exists() != value.exists()" />
         <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
-        <source value="Extension" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <mapping>
         <identity value="rim" />
@@ -585,6 +622,12 @@
       </mapping>
     </element>
     <element id="MessageHeader.destination.modifierExtension">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
       <path value="MessageHeader.destination.modifierExtension" />
       <short value="Extensions that cannot be ignored even if unrecognized" />
       <definition value="May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.&#xA;&#xA;Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)." />
@@ -610,7 +653,7 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <constraint>
         <key value="ext-1" />
@@ -618,7 +661,7 @@
         <human value="Must have either extensions or value[x], not both" />
         <expression value="extension.exists() != value.exists()" />
         <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
-        <source value="Extension" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <isModifier value="true" />
       <isModifierReason value="Modifier extensions are expected to modify the meaning or interpretation of the element that contains them" />
@@ -655,7 +698,7 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <isSummary value="true" />
       <mapping>
@@ -672,6 +715,12 @@
       </mapping>
     </element>
     <element id="MessageHeader.destination.target">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
       <path value="MessageHeader.destination.target" />
       <short value="Particular delivery destination within the destination" />
       <definition value="Identifies the target end system in situations where the initial message transmission is to an intermediary system." />
@@ -695,15 +744,15 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <constraint>
         <key value="ref-1" />
         <severity value="error" />
         <human value="SHALL have a contained resource if a local reference is provided" />
-        <expression value="reference.startsWith('#').not() or (reference.substring(1).trace('url') in %resource.contained.id.trace('ids'))" />
+        <expression value="reference.startsWith('#').not() or (reference.substring(1).trace('url') in %rootResource.contained.id.trace('ids'))" />
         <xpath value="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])" />
-        <source value="Reference" />
+        <source value="http://hl7.org/fhir/StructureDefinition/MessageHeader" />
       </constraint>
       <isSummary value="true" />
       <mapping>
@@ -732,17 +781,10 @@
         <max value="1" />
       </base>
       <type>
-        <code>
-          <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type">
-            <valueString value="string" />
-          </extension>
-          <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type">
-            <valueString value="xsd:string" />
-          </extension>
-          <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type">
-            <valueString value="xsd:string" />
-          </extension>
-        </code>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueUrl value="string" />
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String" />
       </type>
       <mapping>
         <identity value="rim" />
@@ -750,6 +792,12 @@
       </mapping>
     </element>
     <element id="MessageHeader.destination.target.extension">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
       <path value="MessageHeader.destination.target.extension" />
       <slicing>
         <discriminator>
@@ -781,7 +829,7 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <constraint>
         <key value="ext-1" />
@@ -789,7 +837,7 @@
         <human value="Must have either extensions or value[x], not both" />
         <expression value="extension.exists() != value.exists()" />
         <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
-        <source value="Extension" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <mapping>
         <identity value="rim" />
@@ -823,7 +871,7 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <isSummary value="true" />
       <mapping>
@@ -857,10 +905,13 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <isSummary value="true" />
       <binding>
+        <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName">
+          <valueString value="FHIRResourceTypeExt" />
+        </extension>
         <strength value="extensible" />
         <description value="Aa resource (or, for logical models, the URI of the logical model)." />
         <valueSet value="http://hl7.org/fhir/ValueSet/resource-types" />
@@ -875,6 +926,12 @@
       </mapping>
     </element>
     <element id="MessageHeader.destination.target.identifier">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
       <path value="MessageHeader.destination.target.identifier" />
       <short value="Logical reference, when literal reference is not known" />
       <definition value="An identifier for the target resource. This is used when there is no way to reference the other resource directly, either because the entity it represents is not available through a FHIR server, or because there is no way for the author of the resource to convert a known identifier to an actual location. There is no requirement that a Reference.identifier point to something that is actually exposed as a FHIR instance, but it SHALL point to a business concept that would be expected to be exposed as a FHIR instance, and that instance would need to be of a FHIR resource type allowed by the reference." />
@@ -896,7 +953,7 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <isSummary value="true" />
       <mapping>
@@ -933,17 +990,10 @@
         <max value="1" />
       </base>
       <type>
-        <code>
-          <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type">
-            <valueString value="string" />
-          </extension>
-          <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type">
-            <valueString value="xsd:string" />
-          </extension>
-          <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type">
-            <valueString value="xsd:string" />
-          </extension>
-        </code>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueUrl value="string" />
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String" />
       </type>
       <mapping>
         <identity value="rim" />
@@ -951,6 +1001,12 @@
       </mapping>
     </element>
     <element id="MessageHeader.destination.target.identifier.extension">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
       <path value="MessageHeader.destination.target.identifier.extension" />
       <slicing>
         <discriminator>
@@ -982,7 +1038,7 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <constraint>
         <key value="ext-1" />
@@ -990,7 +1046,7 @@
         <human value="Must have either extensions or value[x], not both" />
         <expression value="extension.exists() != value.exists()" />
         <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
-        <source value="Extension" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <mapping>
         <identity value="rim" />
@@ -1024,15 +1080,18 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <isModifier value="true" />
       <isModifierReason value="This is labeled as &quot;Is Modifier&quot; because applications should not mistake a temporary id for a permanent one." />
       <isSummary value="true" />
       <binding>
+        <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName">
+          <valueString value="IdentifierUse" />
+        </extension>
         <strength value="required" />
         <description value="Identifies the purpose for this identifier, if known ." />
-        <valueSet value="http://hl7.org/fhir/ValueSet/identifier-use|4.0.0" />
+        <valueSet value="http://hl7.org/fhir/ValueSet/identifier-use|4.0.1" />
       </binding>
       <mapping>
         <identity value="rim" />
@@ -1048,6 +1107,12 @@
       </mapping>
     </element>
     <element id="MessageHeader.destination.target.identifier.type">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
       <path value="MessageHeader.destination.target.identifier.type" />
       <short value="Description of identifier" />
       <definition value="A coded type for the identifier that can be used to determine which identifier to use for a specific purpose." />
@@ -1070,10 +1135,16 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <isSummary value="true" />
       <binding>
+        <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName">
+          <valueString value="IdentifierType" />
+        </extension>
+        <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-isCommonBinding">
+          <valueBoolean value="true" />
+        </extension>
         <strength value="extensible" />
         <description value="A coded type for an identifier that can be used to determine which identifier to use for a specific purpose." />
         <valueSet value="http://hl7.org/fhir/ValueSet/identifier-type" />
@@ -1131,7 +1202,7 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <isSummary value="true" />
       <mapping>
@@ -1177,7 +1248,7 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <isSummary value="true" />
       <mapping>
@@ -1198,6 +1269,12 @@
       </mapping>
     </element>
     <element id="MessageHeader.destination.target.identifier.period">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
       <path value="MessageHeader.destination.target.identifier.period" />
       <short value="Time period when id is/was valid for use" />
       <definition value="Time period during which identifier is/was valid for use." />
@@ -1219,7 +1296,7 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <constraint>
         <key value="per-1" />
@@ -1227,7 +1304,7 @@
         <human value="If present, start SHALL have a lower value than end" />
         <expression value="start.hasValue().not() or end.hasValue().not() or (start &lt;= end)" />
         <xpath value="not(exists(f:start/@value)) or not(exists(f:end/@value)) or (xs:dateTime(f:start/@value) &lt;= xs:dateTime(f:end/@value))" />
-        <source value="Period" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Identifier" />
       </constraint>
       <isSummary value="true" />
       <mapping>
@@ -1256,6 +1333,12 @@
       </mapping>
     </element>
     <element id="MessageHeader.destination.target.identifier.assigner">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
       <path value="MessageHeader.destination.target.identifier.assigner" />
       <short value="Organization that issued id (may be just text)" />
       <definition value="Organization that issued/manages the identifier." />
@@ -1278,15 +1361,15 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <constraint>
         <key value="ref-1" />
         <severity value="error" />
         <human value="SHALL have a contained resource if a local reference is provided" />
-        <expression value="reference.startsWith('#').not() or (reference.substring(1).trace('url') in %resource.contained.id.trace('ids'))" />
+        <expression value="reference.startsWith('#').not() or (reference.substring(1).trace('url') in %rootResource.contained.id.trace('ids'))" />
         <xpath value="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])" />
-        <source value="Reference" />
+        <source value="http://hl7.org/fhir/StructureDefinition/MessageHeader" />
       </constraint>
       <isSummary value="true" />
       <mapping>
@@ -1311,6 +1394,9 @@
       </mapping>
     </element>
     <element id="MessageHeader.destination.target.display">
+      <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable">
+        <valueBoolean value="true" />
+      </extension>
       <path value="MessageHeader.destination.target.display" />
       <short value="Text alternative for the resource" />
       <definition value="Plain text narrative that identifies the resource in addition to the resource reference." />
@@ -1332,7 +1418,7 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <isSummary value="true" />
       <mapping>
@@ -1367,7 +1453,7 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <isSummary value="true" />
       <mapping>
@@ -1384,6 +1470,12 @@
       </mapping>
     </element>
     <element id="MessageHeader.destination.receiver">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
       <path value="MessageHeader.destination.receiver" />
       <short value="Intended &quot;real-world&quot; recipient for the data" />
       <definition value="Allows data conveyed by a message to be addressed to a particular person or department when routing to a specific application isn't sufficient." />
@@ -1409,15 +1501,15 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <constraint>
         <key value="ref-1" />
         <severity value="error" />
         <human value="SHALL have a contained resource if a local reference is provided" />
-        <expression value="reference.startsWith('#').not() or (reference.substring(1).trace('url') in %resource.contained.id.trace('ids'))" />
+        <expression value="reference.startsWith('#').not() or (reference.substring(1).trace('url') in %rootResource.contained.id.trace('ids'))" />
         <xpath value="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])" />
-        <source value="Reference" />
+        <source value="http://hl7.org/fhir/StructureDefinition/MessageHeader" />
       </constraint>
       <isSummary value="true" />
       <mapping>
@@ -1446,13 +1538,19 @@
       </mapping>
     </element>
     <element id="MessageHeader.sender">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
       <path value="MessageHeader.sender" />
       <short value="Real world sender of the message" />
       <definition value="Identifies the sending system to allow the use of a trust relationship." />
       <comment value="Use case is for where a (trusted) sending system is responsible for multiple organizations, and therefore cannot differentiate based on source endpoint / authentication alone." />
       <requirements value="Allows routing beyond just the application level." />
       <min value="0" />
-      <max value="1" />
+      <max value="0" />
       <base>
         <path value="MessageHeader.sender" />
         <min value="0" />
@@ -1471,15 +1569,15 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <constraint>
         <key value="ref-1" />
         <severity value="error" />
         <human value="SHALL have a contained resource if a local reference is provided" />
-        <expression value="reference.startsWith('#').not() or (reference.substring(1).trace('url') in %resource.contained.id.trace('ids'))" />
+        <expression value="reference.startsWith('#').not() or (reference.substring(1).trace('url') in %rootResource.contained.id.trace('ids'))" />
         <xpath value="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])" />
-        <source value="Reference" />
+        <source value="http://hl7.org/fhir/StructureDefinition/MessageHeader" />
       </constraint>
       <isSummary value="true" />
       <mapping>
@@ -1520,17 +1618,10 @@
         <max value="1" />
       </base>
       <type>
-        <code>
-          <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type">
-            <valueString value="string" />
-          </extension>
-          <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type">
-            <valueString value="xsd:string" />
-          </extension>
-          <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type">
-            <valueString value="xsd:string" />
-          </extension>
-        </code>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueUrl value="string" />
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String" />
       </type>
       <mapping>
         <identity value="rim" />
@@ -1538,6 +1629,12 @@
       </mapping>
     </element>
     <element id="MessageHeader.sender.extension">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
       <path value="MessageHeader.sender.extension" />
       <slicing>
         <discriminator>
@@ -1569,7 +1666,7 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <constraint>
         <key value="ext-1" />
@@ -1577,7 +1674,7 @@
         <human value="Must have either extensions or value[x], not both" />
         <expression value="extension.exists() != value.exists()" />
         <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
-        <source value="Extension" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <mapping>
         <identity value="rim" />
@@ -1611,7 +1708,7 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <isSummary value="true" />
       <mapping>
@@ -1645,10 +1742,13 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <isSummary value="true" />
       <binding>
+        <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName">
+          <valueString value="FHIRResourceTypeExt" />
+        </extension>
         <strength value="extensible" />
         <description value="Aa resource (or, for logical models, the URI of the logical model)." />
         <valueSet value="http://hl7.org/fhir/ValueSet/resource-types" />
@@ -1663,6 +1763,12 @@
       </mapping>
     </element>
     <element id="MessageHeader.sender.identifier">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
       <path value="MessageHeader.sender.identifier" />
       <short value="Logical reference, when literal reference is not known" />
       <definition value="An identifier for the target resource. This is used when there is no way to reference the other resource directly, either because the entity it represents is not available through a FHIR server, or because there is no way for the author of the resource to convert a known identifier to an actual location. There is no requirement that a Reference.identifier point to something that is actually exposed as a FHIR instance, but it SHALL point to a business concept that would be expected to be exposed as a FHIR instance, and that instance would need to be of a FHIR resource type allowed by the reference." />
@@ -1684,7 +1790,7 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <isSummary value="true" />
       <mapping>
@@ -1721,17 +1827,10 @@
         <max value="1" />
       </base>
       <type>
-        <code>
-          <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type">
-            <valueString value="string" />
-          </extension>
-          <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type">
-            <valueString value="xsd:string" />
-          </extension>
-          <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type">
-            <valueString value="xsd:string" />
-          </extension>
-        </code>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueUrl value="string" />
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String" />
       </type>
       <mapping>
         <identity value="rim" />
@@ -1739,6 +1838,12 @@
       </mapping>
     </element>
     <element id="MessageHeader.sender.identifier.extension">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
       <path value="MessageHeader.sender.identifier.extension" />
       <slicing>
         <discriminator>
@@ -1770,7 +1875,7 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <constraint>
         <key value="ext-1" />
@@ -1778,7 +1883,7 @@
         <human value="Must have either extensions or value[x], not both" />
         <expression value="extension.exists() != value.exists()" />
         <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
-        <source value="Extension" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <mapping>
         <identity value="rim" />
@@ -1812,15 +1917,18 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <isModifier value="true" />
       <isModifierReason value="This is labeled as &quot;Is Modifier&quot; because applications should not mistake a temporary id for a permanent one." />
       <isSummary value="true" />
       <binding>
+        <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName">
+          <valueString value="IdentifierUse" />
+        </extension>
         <strength value="required" />
         <description value="Identifies the purpose for this identifier, if known ." />
-        <valueSet value="http://hl7.org/fhir/ValueSet/identifier-use|4.0.0" />
+        <valueSet value="http://hl7.org/fhir/ValueSet/identifier-use|4.0.1" />
       </binding>
       <mapping>
         <identity value="rim" />
@@ -1836,6 +1944,12 @@
       </mapping>
     </element>
     <element id="MessageHeader.sender.identifier.type">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
       <path value="MessageHeader.sender.identifier.type" />
       <short value="Description of identifier" />
       <definition value="A coded type for the identifier that can be used to determine which identifier to use for a specific purpose." />
@@ -1858,10 +1972,16 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <isSummary value="true" />
       <binding>
+        <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName">
+          <valueString value="IdentifierType" />
+        </extension>
+        <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-isCommonBinding">
+          <valueBoolean value="true" />
+        </extension>
         <strength value="extensible" />
         <description value="A coded type for an identifier that can be used to determine which identifier to use for a specific purpose." />
         <valueSet value="http://hl7.org/fhir/ValueSet/identifier-type" />
@@ -1919,7 +2039,7 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <isSummary value="true" />
       <mapping>
@@ -1965,7 +2085,7 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <isSummary value="true" />
       <mapping>
@@ -1986,6 +2106,12 @@
       </mapping>
     </element>
     <element id="MessageHeader.sender.identifier.period">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
       <path value="MessageHeader.sender.identifier.period" />
       <short value="Time period when id is/was valid for use" />
       <definition value="Time period during which identifier is/was valid for use." />
@@ -2007,7 +2133,7 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <constraint>
         <key value="per-1" />
@@ -2015,7 +2141,7 @@
         <human value="If present, start SHALL have a lower value than end" />
         <expression value="start.hasValue().not() or end.hasValue().not() or (start &lt;= end)" />
         <xpath value="not(exists(f:start/@value)) or not(exists(f:end/@value)) or (xs:dateTime(f:start/@value) &lt;= xs:dateTime(f:end/@value))" />
-        <source value="Period" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Identifier" />
       </constraint>
       <isSummary value="true" />
       <mapping>
@@ -2044,6 +2170,12 @@
       </mapping>
     </element>
     <element id="MessageHeader.sender.identifier.assigner">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
       <path value="MessageHeader.sender.identifier.assigner" />
       <short value="Organization that issued id (may be just text)" />
       <definition value="Organization that issued/manages the identifier." />
@@ -2066,15 +2198,15 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <constraint>
         <key value="ref-1" />
         <severity value="error" />
         <human value="SHALL have a contained resource if a local reference is provided" />
-        <expression value="reference.startsWith('#').not() or (reference.substring(1).trace('url') in %resource.contained.id.trace('ids'))" />
+        <expression value="reference.startsWith('#').not() or (reference.substring(1).trace('url') in %rootResource.contained.id.trace('ids'))" />
         <xpath value="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])" />
-        <source value="Reference" />
+        <source value="http://hl7.org/fhir/StructureDefinition/MessageHeader" />
       </constraint>
       <isSummary value="true" />
       <mapping>
@@ -2099,6 +2231,9 @@
       </mapping>
     </element>
     <element id="MessageHeader.sender.display">
+      <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable">
+        <valueBoolean value="true" />
+      </extension>
       <path value="MessageHeader.sender.display" />
       <short value="Text alternative for the resource" />
       <definition value="Plain text narrative that identifies the resource in addition to the resource reference." />
@@ -2120,7 +2255,7 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <isSummary value="true" />
       <mapping>
@@ -2133,6 +2268,12 @@
       </mapping>
     </element>
     <element id="MessageHeader.enterer">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
       <path value="MessageHeader.enterer" />
       <short value="The source of the data entry" />
       <definition value="The person or device that performed the data entry leading to this message. When there is more than one candidate, pick the most proximal to the message. Can provide other enterers in extensions." />
@@ -2157,15 +2298,15 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <constraint>
         <key value="ref-1" />
         <severity value="error" />
         <human value="SHALL have a contained resource if a local reference is provided" />
-        <expression value="reference.startsWith('#').not() or (reference.substring(1).trace('url') in %resource.contained.id.trace('ids'))" />
+        <expression value="reference.startsWith('#').not() or (reference.substring(1).trace('url') in %rootResource.contained.id.trace('ids'))" />
         <xpath value="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])" />
-        <source value="Reference" />
+        <source value="http://hl7.org/fhir/StructureDefinition/MessageHeader" />
       </constraint>
       <isSummary value="true" />
       <mapping>
@@ -2190,6 +2331,12 @@
       </mapping>
     </element>
     <element id="MessageHeader.author">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
       <path value="MessageHeader.author" />
       <short value="The source of the decision" />
       <definition value="The logical author of the message - the person or device that decided the described event should happen. When there is more than one candidate, pick the most proximal to the MessageHeader. Can provide other authors in extensions." />
@@ -2214,15 +2361,15 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <constraint>
         <key value="ref-1" />
         <severity value="error" />
         <human value="SHALL have a contained resource if a local reference is provided" />
-        <expression value="reference.startsWith('#').not() or (reference.substring(1).trace('url') in %resource.contained.id.trace('ids'))" />
+        <expression value="reference.startsWith('#').not() or (reference.substring(1).trace('url') in %rootResource.contained.id.trace('ids'))" />
         <xpath value="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])" />
-        <source value="Reference" />
+        <source value="http://hl7.org/fhir/StructureDefinition/MessageHeader" />
       </constraint>
       <isSummary value="true" />
       <mapping>
@@ -2247,6 +2394,15 @@
       </mapping>
     </element>
     <element id="MessageHeader.source">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name">
+        <valueString value="MessageSource" />
+      </extension>
       <path value="MessageHeader.source" />
       <short value="Message source application" />
       <definition value="The source application from which this message originated." />
@@ -2268,7 +2424,7 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <isSummary value="true" />
       <mapping>
@@ -2297,17 +2453,10 @@
         <max value="1" />
       </base>
       <type>
-        <code>
-          <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type">
-            <valueString value="string" />
-          </extension>
-          <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type">
-            <valueString value="xsd:string" />
-          </extension>
-          <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type">
-            <valueString value="xsd:string" />
-          </extension>
-        </code>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueUrl value="string" />
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String" />
       </type>
       <mapping>
         <identity value="rim" />
@@ -2315,6 +2464,12 @@
       </mapping>
     </element>
     <element id="MessageHeader.source.extension">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
       <path value="MessageHeader.source.extension" />
       <slicing>
         <discriminator>
@@ -2346,7 +2501,7 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <constraint>
         <key value="ext-1" />
@@ -2354,7 +2509,7 @@
         <human value="Must have either extensions or value[x], not both" />
         <expression value="extension.exists() != value.exists()" />
         <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
-        <source value="Extension" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <mapping>
         <identity value="rim" />
@@ -2366,6 +2521,12 @@
       </mapping>
     </element>
     <element id="MessageHeader.source.modifierExtension">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
       <path value="MessageHeader.source.modifierExtension" />
       <short value="Extensions that cannot be ignored even if unrecognized" />
       <definition value="May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.&#xA;&#xA;Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)." />
@@ -2391,7 +2552,7 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <constraint>
         <key value="ext-1" />
@@ -2399,7 +2560,7 @@
         <human value="Must have either extensions or value[x], not both" />
         <expression value="extension.exists() != value.exists()" />
         <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
-        <source value="Extension" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <isModifier value="true" />
       <isModifierReason value="Modifier extensions are expected to modify the meaning or interpretation of the element that contains them" />
@@ -2437,7 +2598,7 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <isSummary value="true" />
       <mapping>
@@ -2476,7 +2637,7 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <isSummary value="true" />
       <mapping>
@@ -2515,7 +2676,7 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <isSummary value="true" />
       <mapping>
@@ -2532,6 +2693,12 @@
       </mapping>
     </element>
     <element id="MessageHeader.source.contact">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
       <path value="MessageHeader.source.contact" />
       <short value="Human contact for problems" />
       <definition value="An e-mail, phone, website or other contact point to use to resolve issues with message communications." />
@@ -2553,7 +2720,7 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <constraint>
         <key value="cpt-2" />
@@ -2561,7 +2728,7 @@
         <human value="A system is required if a value is provided." />
         <expression value="value.empty() or system.exists()" />
         <xpath value="not(exists(f:value)) or exists(f:system)" />
-        <source value="ContactPoint" />
+        <source value="http://hl7.org/fhir/StructureDefinition/MessageHeader" />
       </constraint>
       <isSummary value="true" />
       <mapping>
@@ -2592,7 +2759,7 @@
     <element id="MessageHeader.source.endpoint">
       <path value="MessageHeader.source.endpoint" />
       <short value="Actual message source address or id" />
-      <definition value="Identifies the routing target to send acknowledgements to." />
+      <definition value="Identifies the routing target to send acknowledgements to.&#xD;&#xA;&#xD;&#xA;Might be" />
       <comment value="The id may be a non-resolvable URI for systems that do not use standard network-based addresses." />
       <requirements value="Identifies where to send responses, may influence security permissions." />
       <min value="1" />
@@ -2612,7 +2779,7 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <isSummary value="true" />
       <mapping>
@@ -2629,6 +2796,12 @@
       </mapping>
     </element>
     <element id="MessageHeader.responsible">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
       <path value="MessageHeader.responsible" />
       <short value="Final responsibility for event" />
       <definition value="The person or organization that accepts overall responsibility for the contents of the message. The implication is that the message event happened under the policies of the responsible party." />
@@ -2654,15 +2827,15 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <constraint>
         <key value="ref-1" />
         <severity value="error" />
         <human value="SHALL have a contained resource if a local reference is provided" />
-        <expression value="reference.startsWith('#').not() or (reference.substring(1).trace('url') in %resource.contained.id.trace('ids'))" />
+        <expression value="reference.startsWith('#').not() or (reference.substring(1).trace('url') in %rootResource.contained.id.trace('ids'))" />
         <xpath value="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])" />
-        <source value="Reference" />
+        <source value="http://hl7.org/fhir/StructureDefinition/MessageHeader" />
       </constraint>
       <isSummary value="true" />
       <mapping>
@@ -2687,6 +2860,12 @@
       </mapping>
     </element>
     <element id="MessageHeader.reason">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
       <path value="MessageHeader.reason" />
       <short value="Cause of event" />
       <definition value="Coded indication of the cause for the event - indicates  a reason for the occurrence of the event that is a focus of this message." />
@@ -2709,10 +2888,13 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <isSummary value="true" />
       <binding>
+        <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName">
+          <valueString value="EventReason" />
+        </extension>
         <strength value="example" />
         <description value="Reason for event occurrence." />
         <valueSet value="http://hl7.org/fhir/ValueSet/message-reason-encounter" />
@@ -2747,6 +2929,12 @@
       </mapping>
     </element>
     <element id="MessageHeader.response">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
       <path value="MessageHeader.response" />
       <short value="If this is a reply to prior message" />
       <definition value="Information about the message that this message is a response to.  Only present if this message is a response." />
@@ -2767,7 +2955,7 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <isSummary value="true" />
       <mapping>
@@ -2796,17 +2984,10 @@
         <max value="1" />
       </base>
       <type>
-        <code>
-          <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type">
-            <valueString value="string" />
-          </extension>
-          <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type">
-            <valueString value="xsd:string" />
-          </extension>
-          <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type">
-            <valueString value="xsd:string" />
-          </extension>
-        </code>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueUrl value="string" />
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String" />
       </type>
       <mapping>
         <identity value="rim" />
@@ -2814,6 +2995,12 @@
       </mapping>
     </element>
     <element id="MessageHeader.response.extension">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
       <path value="MessageHeader.response.extension" />
       <slicing>
         <discriminator>
@@ -2845,7 +3032,7 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <constraint>
         <key value="ext-1" />
@@ -2853,7 +3040,7 @@
         <human value="Must have either extensions or value[x], not both" />
         <expression value="extension.exists() != value.exists()" />
         <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
-        <source value="Extension" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <mapping>
         <identity value="rim" />
@@ -2865,6 +3052,12 @@
       </mapping>
     </element>
     <element id="MessageHeader.response.modifierExtension">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
       <path value="MessageHeader.response.modifierExtension" />
       <short value="Extensions that cannot be ignored even if unrecognized" />
       <definition value="May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.&#xA;&#xA;Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself)." />
@@ -2890,7 +3083,7 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <constraint>
         <key value="ext-1" />
@@ -2898,7 +3091,7 @@
         <human value="Must have either extensions or value[x], not both" />
         <expression value="extension.exists() != value.exists()" />
         <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
-        <source value="Extension" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <isModifier value="true" />
       <isModifierReason value="Modifier extensions are expected to modify the meaning or interpretation of the element that contains them" />
@@ -2935,7 +3128,7 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <isSummary value="true" />
       <mapping>
@@ -2974,13 +3167,16 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <isSummary value="true" />
       <binding>
+        <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName">
+          <valueString value="ResponseType" />
+        </extension>
         <strength value="required" />
         <description value="The kind of response to a message." />
-        <valueSet value="http://hl7.org/fhir/ValueSet/response-code|4.0.0" />
+        <valueSet value="http://hl7.org/fhir/ValueSet/response-code|4.0.1" />
       </binding>
       <mapping>
         <identity value="rim" />
@@ -2996,6 +3192,12 @@
       </mapping>
     </element>
     <element id="MessageHeader.response.details">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
       <path value="MessageHeader.response.details" />
       <short value="Specific list of hints/warnings/errors" />
       <definition value="Full details of any issues found in the message." />
@@ -3019,15 +3221,15 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <constraint>
         <key value="ref-1" />
         <severity value="error" />
         <human value="SHALL have a contained resource if a local reference is provided" />
-        <expression value="reference.startsWith('#').not() or (reference.substring(1).trace('url') in %resource.contained.id.trace('ids'))" />
+        <expression value="reference.startsWith('#').not() or (reference.substring(1).trace('url') in %rootResource.contained.id.trace('ids'))" />
         <xpath value="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])" />
-        <source value="Reference" />
+        <source value="http://hl7.org/fhir/StructureDefinition/MessageHeader" />
       </constraint>
       <isSummary value="true" />
       <mapping>
@@ -3047,242 +3249,13 @@
         <map value="AcknowledgementDetail or Observation[classCode=&quot;ALRT&quot; and moodCode=&quot;EVN&quot;]" />
       </mapping>
     </element>
-    <element id="MessageHeader.response.details.id">
-      <path value="MessageHeader.response.details.id" />
-      <representation value="xmlAttr" />
-      <short value="Unique id for inter-element referencing" />
-      <definition value="Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." />
-      <min value="0" />
-      <max value="1" />
-      <base>
-        <path value="Element.id" />
-        <min value="0" />
-        <max value="1" />
-      </base>
-      <type>
-        <code>
-          <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type">
-            <valueString value="string" />
-          </extension>
-          <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type">
-            <valueString value="xsd:string" />
-          </extension>
-          <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type">
-            <valueString value="xsd:string" />
-          </extension>
-        </code>
-      </type>
-      <mapping>
-        <identity value="rim" />
-        <map value="n/a" />
-      </mapping>
-    </element>
-    <element id="MessageHeader.response.details.extension">
-      <path value="MessageHeader.response.details.extension" />
-      <slicing>
-        <discriminator>
-          <type value="value" />
-          <path value="url" />
-        </discriminator>
-        <description value="Extensions are always sliced by (at least) url" />
-        <rules value="open" />
-      </slicing>
-      <short value="Additional content defined by implementations" />
-      <definition value="May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
-      <comment value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
-      <alias value="extensions" />
-      <alias value="user content" />
-      <min value="0" />
-      <max value="*" />
-      <base>
-        <path value="Element.extension" />
-        <min value="0" />
-        <max value="*" />
-      </base>
-      <type>
-        <code value="Extension" />
-      </type>
-      <condition value="ele-1" />
-      <constraint>
-        <key value="ele-1" />
-        <severity value="error" />
-        <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() or (children().count() &gt; id.count())" />
-        <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
-      </constraint>
-      <constraint>
-        <key value="ext-1" />
-        <severity value="error" />
-        <human value="Must have either extensions or value[x], not both" />
-        <expression value="extension.exists() != value.exists()" />
-        <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
-        <source value="Extension" />
-      </constraint>
-      <mapping>
-        <identity value="rim" />
-        <map value="n/a" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="N/A" />
-      </mapping>
-    </element>
-    <element id="MessageHeader.response.details.reference">
-      <path value="MessageHeader.response.details.reference" />
-      <short value="Literal reference, Relative, internal or absolute URL" />
-      <definition value="A reference to a location at which the other resource is found. The reference may be a relative reference, in which case it is relative to the service base URL, or an absolute URL that resolves to the location where the resource is found. The reference may be version specific or not. If the reference is not to a FHIR RESTful server, then it should be assumed to be version specific. Internal fragment references (start with '#') refer to contained resources." />
-      <comment value="Using absolute URLs provides a stable scalable approach suitable for a cloud/web context, while using relative/logical references provides a flexible approach suitable for use when trading across closed eco-system boundaries.   Absolute URLs do not need to point to a FHIR RESTful server, though this is the preferred approach. If the URL conforms to the structure &quot;/[type]/[id]&quot; then it should be assumed that the reference is to a FHIR RESTful server." />
-      <min value="0" />
-      <max value="0" />
-      <base>
-        <path value="Reference.reference" />
-        <min value="0" />
-        <max value="1" />
-      </base>
-      <type>
-        <code value="string" />
-      </type>
-      <condition value="ele-1" />
-      <condition value="ref-1" />
-      <constraint>
-        <key value="ele-1" />
-        <severity value="error" />
-        <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() or (children().count() &gt; id.count())" />
-        <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
-      </constraint>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="rim" />
-        <map value="n/a" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="N/A" />
-      </mapping>
-    </element>
-    <element id="MessageHeader.response.details.type">
-      <path value="MessageHeader.response.details.type" />
-      <short value="Type the reference refers to (e.g. &quot;Patient&quot;)" />
-      <definition value="The expected type of the target of the reference. If both Reference.type and Reference.reference are populated and Reference.reference is a FHIR URL, both SHALL be consistent.&#xA;&#xA;The type is the Canonical URL of Resource Definition that is the type this reference refers to. References are URLs that are relative to http://hl7.org/fhir/StructureDefinition/ e.g. &quot;Patient&quot; is a reference to http://hl7.org/fhir/StructureDefinition/Patient. Absolute URLs are only allowed for logical models (and can only be used in references in logical models, not resources)." />
-      <comment value="This element is used to indicate the type of  the target of the reference. This may be used which ever of the other elements are populated (or not). In some cases, the type of the target may be determined by inspection of the reference (e.g. a RESTful URL) or by resolving the target of the reference; if both the type and a reference is provided, the reference SHALL resolve to a resource of the same type as that specified." />
-      <min value="0" />
-      <max value="0" />
-      <base>
-        <path value="Reference.type" />
-        <min value="0" />
-        <max value="1" />
-      </base>
-      <type>
-        <code value="uri" />
-      </type>
-      <condition value="ele-1" />
-      <constraint>
-        <key value="ele-1" />
-        <severity value="error" />
-        <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() or (children().count() &gt; id.count())" />
-        <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
-      </constraint>
-      <isSummary value="true" />
-      <binding>
-        <strength value="extensible" />
-        <description value="Aa resource (or, for logical models, the URI of the logical model)." />
-        <valueSet value="http://hl7.org/fhir/ValueSet/resource-types" />
-      </binding>
-      <mapping>
-        <identity value="rim" />
-        <map value="n/a" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="N/A" />
-      </mapping>
-    </element>
-    <element id="MessageHeader.response.details.identifier">
-      <path value="MessageHeader.response.details.identifier" />
-      <short value="Logical reference, when literal reference is not known" />
-      <definition value="An identifier for the target resource. This is used when there is no way to reference the other resource directly, either because the entity it represents is not available through a FHIR server, or because there is no way for the author of the resource to convert a known identifier to an actual location. There is no requirement that a Reference.identifier point to something that is actually exposed as a FHIR instance, but it SHALL point to a business concept that would be expected to be exposed as a FHIR instance, and that instance would need to be of a FHIR resource type allowed by the reference." />
-      <comment value="When an identifier is provided in place of a reference, any system processing the reference will only be able to resolve the identifier to a reference if it understands the business context in which the identifier is used. Sometimes this is global (e.g. a national identifier) but often it is not. For this reason, none of the useful mechanisms described for working with references (e.g. chaining, includes) are possible, nor should servers be expected to be able resolve the reference. Servers may accept an identifier based reference untouched, resolve it, and/or reject it - see CapabilityStatement.rest.resource.referencePolicy. &#xA;&#xA;When both an identifier and a literal reference are provided, the literal reference is preferred. Applications processing the resource are allowed - but not required - to check that the identifier matches the literal reference&#xA;&#xA;Applications converting a logical reference to a literal reference may choose to leave the logical reference present, or remove it.&#xA;&#xA;Reference is intended to point to a structure that can potentially be expressed as a FHIR resource, though there is no need for it to exist as an actual FHIR resource instance - except in as much as an application wishes to actual find the target of the reference. The content referred to be the identifier must meet the logical constraints implied by any limitations on what resource types are permitted for the reference.  For example, it would not be legitimate to send the identifier for a drug prescription if the type were Reference(Observation|DiagnosticReport).  One of the use-cases for Reference.identifier is the situation where no FHIR representation exists (where the type is Reference (Any)." />
-      <min value="0" />
-      <max value="1" />
-      <base>
-        <path value="Reference.identifier" />
-        <min value="0" />
-        <max value="1" />
-      </base>
-      <type>
-        <code value="Identifier" />
-      </type>
-      <condition value="ele-1" />
-      <constraint>
-        <key value="ele-1" />
-        <severity value="error" />
-        <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() or (children().count() &gt; id.count())" />
-        <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
-      </constraint>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="rim" />
-        <map value="n/a" />
-      </mapping>
-      <mapping>
-        <identity value="v2" />
-        <map value="CX / EI (occasionally, more often EI maps to a resource id or a URL)" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="II - The Identifier class is a little looser than the v3 type II because it allows URIs as well as registered OIDs or GUIDs.  Also maps to Role[classCode=IDENT]" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="Identifier" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value=".identifier" />
-      </mapping>
-    </element>
-    <element id="MessageHeader.response.details.display">
-      <path value="MessageHeader.response.details.display" />
-      <short value="Text alternative for the resource" />
-      <definition value="Plain text narrative that identifies the resource in addition to the resource reference." />
-      <comment value="This is generally not the same as the Resource.text of the referenced resource.  The purpose is to identify what's being referenced, not to fully describe it." />
-      <min value="0" />
-      <max value="1" />
-      <base>
-        <path value="Reference.display" />
-        <min value="0" />
-        <max value="1" />
-      </base>
-      <type>
-        <code value="string" />
-      </type>
-      <condition value="ele-1" />
-      <constraint>
-        <key value="ele-1" />
-        <severity value="error" />
-        <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() or (children().count() &gt; id.count())" />
-        <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
-      </constraint>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="rim" />
-        <map value="n/a" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="N/A" />
-      </mapping>
-    </element>
     <element id="MessageHeader.focus">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
       <path value="MessageHeader.focus" />
       <short value="The actual content of the message" />
       <definition value="The actual data of the message - a reference to the root/focus class of the event." />
@@ -3306,15 +3279,15 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <constraint>
         <key value="ref-1" />
         <severity value="error" />
         <human value="SHALL have a contained resource if a local reference is provided" />
-        <expression value="reference.startsWith('#').not() or (reference.substring(1).trace('url') in %resource.contained.id.trace('ids'))" />
+        <expression value="reference.startsWith('#').not() or (reference.substring(1).trace('url') in %rootResource.contained.id.trace('ids'))" />
         <xpath value="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])" />
-        <source value="Reference" />
+        <source value="http://hl7.org/fhir/StructureDefinition/MessageHeader" />
       </constraint>
       <isSummary value="true" />
       <mapping>
@@ -3343,17 +3316,10 @@
         <max value="1" />
       </base>
       <type>
-        <code>
-          <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type">
-            <valueString value="string" />
-          </extension>
-          <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type">
-            <valueString value="xsd:string" />
-          </extension>
-          <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type">
-            <valueString value="xsd:string" />
-          </extension>
-        </code>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueUrl value="string" />
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String" />
       </type>
       <mapping>
         <identity value="rim" />
@@ -3361,6 +3327,12 @@
       </mapping>
     </element>
     <element id="MessageHeader.focus.extension">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
       <path value="MessageHeader.focus.extension" />
       <slicing>
         <discriminator>
@@ -3392,7 +3364,7 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <constraint>
         <key value="ext-1" />
@@ -3400,7 +3372,7 @@
         <human value="Must have either extensions or value[x], not both" />
         <expression value="extension.exists() != value.exists()" />
         <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
-        <source value="Extension" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <mapping>
         <identity value="rim" />
@@ -3416,7 +3388,7 @@
       <short value="Literal reference, Relative, internal or absolute URL" />
       <definition value="A reference to a location at which the other resource is found. The reference may be a relative reference, in which case it is relative to the service base URL, or an absolute URL that resolves to the location where the resource is found. The reference may be version specific or not. If the reference is not to a FHIR RESTful server, then it should be assumed to be version specific. Internal fragment references (start with '#') refer to contained resources." />
       <comment value="Referer til entry i bundle. F.eks 'http://helse-nord/fhir/hnbloodpressure/&lt;id&gt;'. Evt url til kildesystemet. Poenget er vel mer å unikt finne referansen i bundlen enn at url skal gå mot et faktisk fungerende endepunkt. I så fall må en evt tjeneste gå mot alle potensielle inneholder f.eks blodtrykk (om det er det denne hendelsen handler om). I og med at denne meldingen sendes så er det kun kildesystemet som inneholder blodtrykket i sendeøyeblikk, så å slå dette opp i fagsystem X (ikke kilden) vil ikke fungere." />
-      <min value="1" />
+      <min value="0" />
       <max value="1" />
       <base>
         <path value="Reference.reference" />
@@ -3434,7 +3406,7 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <isSummary value="true" />
       <mapping>
@@ -3468,10 +3440,13 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <isSummary value="true" />
       <binding>
+        <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName">
+          <valueString value="FHIRResourceTypeExt" />
+        </extension>
         <strength value="extensible" />
         <description value="Aa resource (or, for logical models, the URI of the logical model)." />
         <valueSet value="http://hl7.org/fhir/ValueSet/resource-types" />
@@ -3486,6 +3461,12 @@
       </mapping>
     </element>
     <element id="MessageHeader.focus.identifier">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+        <valueCode value="normative" />
+      </extension>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version">
+        <valueCode value="4.0.0" />
+      </extension>
       <path value="MessageHeader.focus.identifier" />
       <short value="Logical reference, when literal reference is not known" />
       <definition value="An identifier for the target resource. This is used when there is no way to reference the other resource directly, either because the entity it represents is not available through a FHIR server, or because there is no way for the author of the resource to convert a known identifier to an actual location. There is no requirement that a Reference.identifier point to something that is actually exposed as a FHIR instance, but it SHALL point to a business concept that would be expected to be exposed as a FHIR instance, and that instance would need to be of a FHIR resource type allowed by the reference." />
@@ -3507,7 +3488,7 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <isSummary value="true" />
       <mapping>
@@ -3531,396 +3512,10 @@
         <map value=".identifier" />
       </mapping>
     </element>
-    <element id="MessageHeader.focus.identifier.id">
-      <path value="MessageHeader.focus.identifier.id" />
-      <representation value="xmlAttr" />
-      <short value="Unique id for inter-element referencing" />
-      <definition value="Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." />
-      <min value="0" />
-      <max value="1" />
-      <base>
-        <path value="Element.id" />
-        <min value="0" />
-        <max value="1" />
-      </base>
-      <type>
-        <code>
-          <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type">
-            <valueString value="string" />
-          </extension>
-          <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type">
-            <valueString value="xsd:string" />
-          </extension>
-          <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type">
-            <valueString value="xsd:string" />
-          </extension>
-        </code>
-      </type>
-      <mapping>
-        <identity value="rim" />
-        <map value="n/a" />
-      </mapping>
-    </element>
-    <element id="MessageHeader.focus.identifier.extension">
-      <path value="MessageHeader.focus.identifier.extension" />
-      <slicing>
-        <discriminator>
-          <type value="value" />
-          <path value="url" />
-        </discriminator>
-        <description value="Extensions are always sliced by (at least) url" />
-        <rules value="open" />
-      </slicing>
-      <short value="Additional content defined by implementations" />
-      <definition value="May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
-      <comment value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
-      <alias value="extensions" />
-      <alias value="user content" />
-      <min value="0" />
-      <max value="*" />
-      <base>
-        <path value="Element.extension" />
-        <min value="0" />
-        <max value="*" />
-      </base>
-      <type>
-        <code value="Extension" />
-      </type>
-      <condition value="ele-1" />
-      <constraint>
-        <key value="ele-1" />
-        <severity value="error" />
-        <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() or (children().count() &gt; id.count())" />
-        <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
-      </constraint>
-      <constraint>
-        <key value="ext-1" />
-        <severity value="error" />
-        <human value="Must have either extensions or value[x], not both" />
-        <expression value="extension.exists() != value.exists()" />
-        <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
-        <source value="Extension" />
-      </constraint>
-      <mapping>
-        <identity value="rim" />
-        <map value="n/a" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="N/A" />
-      </mapping>
-    </element>
-    <element id="MessageHeader.focus.identifier.use">
-      <path value="MessageHeader.focus.identifier.use" />
-      <short value="usual | official | temp | secondary | old (If known)" />
-      <definition value="The purpose of this identifier." />
-      <comment value="Applications can assume that an identifier is permanent unless it explicitly says that it is temporary." />
-      <requirements value="Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers." />
-      <min value="0" />
-      <max value="0" />
-      <base>
-        <path value="Identifier.use" />
-        <min value="0" />
-        <max value="1" />
-      </base>
-      <type>
-        <code value="code" />
-      </type>
-      <condition value="ele-1" />
-      <constraint>
-        <key value="ele-1" />
-        <severity value="error" />
-        <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() or (children().count() &gt; id.count())" />
-        <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
-      </constraint>
-      <isModifier value="true" />
-      <isModifierReason value="This is labeled as &quot;Is Modifier&quot; because applications should not mistake a temporary id for a permanent one." />
-      <isSummary value="true" />
-      <binding>
-        <strength value="required" />
-        <description value="Identifies the purpose for this identifier, if known ." />
-        <valueSet value="http://hl7.org/fhir/ValueSet/identifier-use|4.0.0" />
-      </binding>
-      <mapping>
-        <identity value="rim" />
-        <map value="n/a" />
-      </mapping>
-      <mapping>
-        <identity value="v2" />
-        <map value="N/A" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="Role.code or implied by context" />
-      </mapping>
-    </element>
-    <element id="MessageHeader.focus.identifier.type">
-      <path value="MessageHeader.focus.identifier.type" />
-      <short value="Description of identifier" />
-      <definition value="A coded type for the identifier that can be used to determine which identifier to use for a specific purpose." />
-      <comment value="This element deals only with general categories of identifiers.  It SHOULD not be used for codes that correspond 1..1 with the Identifier.system. Some identifiers may fall into multiple categories due to common usage.   Where the system is known, a type is unnecessary because the type is always part of the system definition. However systems often need to handle identifiers where the system is not known. There is not a 1:1 relationship between type and system, since many different systems have the same type." />
-      <requirements value="Allows users to make use of identifiers when the identifier system is not known." />
-      <min value="0" />
-      <max value="0" />
-      <base>
-        <path value="Identifier.type" />
-        <min value="0" />
-        <max value="1" />
-      </base>
-      <type>
-        <code value="CodeableConcept" />
-      </type>
-      <condition value="ele-1" />
-      <constraint>
-        <key value="ele-1" />
-        <severity value="error" />
-        <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() or (children().count() &gt; id.count())" />
-        <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
-      </constraint>
-      <isSummary value="true" />
-      <binding>
-        <strength value="extensible" />
-        <description value="A coded type for an identifier that can be used to determine which identifier to use for a specific purpose." />
-        <valueSet value="http://hl7.org/fhir/ValueSet/identifier-type" />
-      </binding>
-      <mapping>
-        <identity value="rim" />
-        <map value="n/a" />
-      </mapping>
-      <mapping>
-        <identity value="v2" />
-        <map value="CE/CNE/CWE" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="CD" />
-      </mapping>
-      <mapping>
-        <identity value="orim" />
-        <map value="fhir:CodeableConcept rdfs:subClassOf dt:CD" />
-      </mapping>
-      <mapping>
-        <identity value="v2" />
-        <map value="CX.5" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="Role.code or implied by context" />
-      </mapping>
-    </element>
-    <element id="MessageHeader.focus.identifier.system">
-      <path value="MessageHeader.focus.identifier.system" />
-      <short value="The namespace for the identifier value" />
-      <definition value="Establishes the namespace for the value - that is, a URL that describes a set values that are unique." />
-      <comment value="Identifier.system is always case sensitive." />
-      <requirements value="There are many sets  of identifiers.  To perform matching of two identifiers, we need to know what set we're dealing with. The system identifies a particular set of unique identifiers." />
-      <min value="0" />
-      <max value="1" />
-      <base>
-        <path value="Identifier.system" />
-        <min value="0" />
-        <max value="1" />
-      </base>
-      <type>
-        <code value="uri" />
-      </type>
-      <example>
-        <label value="General" />
-        <valueUri value="http://www.acme.com/identifiers/patient" />
-      </example>
-      <condition value="ele-1" />
-      <constraint>
-        <key value="ele-1" />
-        <severity value="error" />
-        <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() or (children().count() &gt; id.count())" />
-        <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
-      </constraint>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="rim" />
-        <map value="n/a" />
-      </mapping>
-      <mapping>
-        <identity value="v2" />
-        <map value="CX.4 / EI-2-4" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="II.root or Role.id.root" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="./IdentifierType" />
-      </mapping>
-    </element>
-    <element id="MessageHeader.focus.identifier.value">
-      <path value="MessageHeader.focus.identifier.value" />
-      <short value="The value that is unique" />
-      <definition value="The portion of the identifier typically relevant to the user and which is unique within the context of the system." />
-      <comment value="If the value is a full URI, then the system SHALL be urn:ietf:rfc:3986.  The value's primary purpose is computational mapping.  As a result, it may be normalized for comparison purposes (e.g. removing non-significant whitespace, dashes, etc.)  A value formatted for human display can be conveyed using the [Rendered Value extension](extension-rendered-value.html). Identifier.value is to be treated as case sensitive unless knowledge of the Identifier.system allows the processer to be confident that non-case-sensitive processing is safe." />
-      <min value="0" />
-      <max value="1" />
-      <base>
-        <path value="Identifier.value" />
-        <min value="0" />
-        <max value="1" />
-      </base>
-      <type>
-        <code value="string" />
-      </type>
-      <example>
-        <label value="General" />
-        <valueString value="123456" />
-      </example>
-      <condition value="ele-1" />
-      <constraint>
-        <key value="ele-1" />
-        <severity value="error" />
-        <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() or (children().count() &gt; id.count())" />
-        <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
-      </constraint>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="rim" />
-        <map value="n/a" />
-      </mapping>
-      <mapping>
-        <identity value="v2" />
-        <map value="CX.1 / EI.1" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="II.extension or II.root if system indicates OID or GUID (Or Role.id.extension or root)" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="./Value" />
-      </mapping>
-    </element>
-    <element id="MessageHeader.focus.identifier.period">
-      <path value="MessageHeader.focus.identifier.period" />
-      <short value="Time period when id is/was valid for use" />
-      <definition value="Time period during which identifier is/was valid for use." />
-      <comment value="A Period specifies a range of time; the context of use will specify whether the entire range applies (e.g. &quot;the patient was an inpatient of the hospital for this time range&quot;) or one value from the range applies (e.g. &quot;give to the patient between these two times&quot;).&#xA;&#xA;Period is not used for a duration (a measure of elapsed time). See [Duration](datatypes.html#Duration)." />
-      <min value="0" />
-      <max value="0" />
-      <base>
-        <path value="Identifier.period" />
-        <min value="0" />
-        <max value="1" />
-      </base>
-      <type>
-        <code value="Period" />
-      </type>
-      <condition value="ele-1" />
-      <constraint>
-        <key value="ele-1" />
-        <severity value="error" />
-        <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() or (children().count() &gt; id.count())" />
-        <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
-      </constraint>
-      <constraint>
-        <key value="per-1" />
-        <severity value="error" />
-        <human value="If present, start SHALL have a lower value than end" />
-        <expression value="start.hasValue().not() or end.hasValue().not() or (start &lt;= end)" />
-        <xpath value="not(exists(f:start/@value)) or not(exists(f:end/@value)) or (xs:dateTime(f:start/@value) &lt;= xs:dateTime(f:end/@value))" />
-        <source value="Period" />
-      </constraint>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="rim" />
-        <map value="n/a" />
-      </mapping>
-      <mapping>
-        <identity value="v2" />
-        <map value="DR" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="IVL&lt;TS&gt;[lowClosed=&quot;true&quot; and highClosed=&quot;true&quot;] or URG&lt;TS&gt;[lowClosed=&quot;true&quot; and highClosed=&quot;true&quot;]" />
-      </mapping>
-      <mapping>
-        <identity value="v2" />
-        <map value="CX.7 + CX.8" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="Role.effectiveTime or implied by context" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="./StartDate and ./EndDate" />
-      </mapping>
-    </element>
-    <element id="MessageHeader.focus.identifier.assigner">
-      <path value="MessageHeader.focus.identifier.assigner" />
-      <short value="Organization that issued id (may be just text)" />
-      <definition value="Organization that issued/manages the identifier." />
-      <comment value="The Identifier.assigner may omit the .reference element and only contain a .display element reflecting the name or other textual information about the assigning organization." />
-      <min value="0" />
-      <max value="0" />
-      <base>
-        <path value="Identifier.assigner" />
-        <min value="0" />
-        <max value="1" />
-      </base>
-      <type>
-        <code value="Reference" />
-        <targetProfile value="http://hl7.org/fhir/StructureDefinition/Organization" />
-      </type>
-      <condition value="ele-1" />
-      <constraint>
-        <key value="ele-1" />
-        <severity value="error" />
-        <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() or (children().count() &gt; id.count())" />
-        <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
-      </constraint>
-      <constraint>
-        <key value="ref-1" />
-        <severity value="error" />
-        <human value="SHALL have a contained resource if a local reference is provided" />
-        <expression value="reference.startsWith('#').not() or (reference.substring(1).trace('url') in %resource.contained.id.trace('ids'))" />
-        <xpath value="not(starts-with(f:reference/@value, '#')) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, '#')])" />
-        <source value="Reference" />
-      </constraint>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="rim" />
-        <map value="n/a" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="The target of a resource reference is a RIM entry point (Act, Role, or Entity)" />
-      </mapping>
-      <mapping>
-        <identity value="v2" />
-        <map value="CX.4 / (CX.4,CX.9,CX.10)" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="./IdentifierIssuingAuthority" />
-      </mapping>
-    </element>
     <element id="MessageHeader.focus.display">
+      <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable">
+        <valueBoolean value="true" />
+      </extension>
       <path value="MessageHeader.focus.display" />
       <short value="Text alternative for the resource" />
       <definition value="Plain text narrative that identifies the resource in addition to the resource reference." />
@@ -3942,7 +3537,7 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <isSummary value="true" />
       <mapping>
@@ -3978,7 +3573,7 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-        <source value="Element" />
+        <source value="http://hl7.org/fhir/StructureDefinition/Element" />
       </constraint>
       <isSummary value="true" />
       <mapping>
@@ -3996,8 +3591,12 @@
       <path value="MessageHeader.event[x]" />
       <binding>
         <strength value="required" />
-        <valueSet value="http://helse-nord.no/fhir/ValueSet/HNMessageEvents" />
+        <valueSet value="http://helsenord.no/fhir/ValueSet/HNMessageEventsValueSet" />
       </binding>
+    </element>
+    <element id="MessageHeader.destination">
+      <path value="MessageHeader.destination" />
+      <max value="0" />
     </element>
     <element id="MessageHeader.destination.target.reference">
       <path value="MessageHeader.destination.target.reference" />
@@ -4033,6 +3632,10 @@
     </element>
     <element id="MessageHeader.destination.receiver">
       <path value="MessageHeader.destination.receiver" />
+      <max value="0" />
+    </element>
+    <element id="MessageHeader.sender">
+      <path value="MessageHeader.sender" />
       <max value="0" />
     </element>
     <element id="MessageHeader.sender.reference">
@@ -4088,6 +3691,10 @@
       <path value="MessageHeader.source.contact" />
       <max value="0" />
     </element>
+    <element id="MessageHeader.source.endpoint">
+      <path value="MessageHeader.source.endpoint" />
+      <definition value="Identifies the routing target to send acknowledgements to.&#xD;&#xA;&#xD;&#xA;Might be" />
+    </element>
     <element id="MessageHeader.responsible">
       <path value="MessageHeader.responsible" />
       <max value="0" />
@@ -4096,18 +3703,9 @@
       <path value="MessageHeader.reason" />
       <max value="0" />
     </element>
-    <element id="MessageHeader.response.details.reference">
-      <path value="MessageHeader.response.details.reference" />
-      <max value="0" />
-    </element>
-    <element id="MessageHeader.response.details.type">
-      <path value="MessageHeader.response.details.type" />
-      <max value="0" />
-    </element>
     <element id="MessageHeader.focus.reference">
       <path value="MessageHeader.focus.reference" />
       <comment value="Referer til entry i bundle. F.eks 'http://helse-nord/fhir/hnbloodpressure/&lt;id&gt;'. Evt url til kildesystemet. Poenget er vel mer å unikt finne referansen i bundlen enn at url skal gå mot et faktisk fungerende endepunkt. I så fall må en evt tjeneste gå mot alle potensielle inneholder f.eks blodtrykk (om det er det denne hendelsen handler om). I og med at denne meldingen sendes så er det kun kildesystemet som inneholder blodtrykket i sendeøyeblikk, så å slå dette opp i fagsystem X (ikke kilden) vil ikke fungere." />
-      <min value="1" />
     </element>
     <element id="MessageHeader.focus.type">
       <path value="MessageHeader.focus.type" />
@@ -4115,22 +3713,6 @@
     </element>
     <element id="MessageHeader.focus.identifier">
       <path value="MessageHeader.focus.identifier" />
-      <max value="0" />
-    </element>
-    <element id="MessageHeader.focus.identifier.use">
-      <path value="MessageHeader.focus.identifier.use" />
-      <max value="0" />
-    </element>
-    <element id="MessageHeader.focus.identifier.type">
-      <path value="MessageHeader.focus.identifier.type" />
-      <max value="0" />
-    </element>
-    <element id="MessageHeader.focus.identifier.period">
-      <path value="MessageHeader.focus.identifier.period" />
-      <max value="0" />
-    </element>
-    <element id="MessageHeader.focus.identifier.assigner">
-      <path value="MessageHeader.focus.identifier.assigner" />
       <max value="0" />
     </element>
     <element id="MessageHeader.focus.display">
