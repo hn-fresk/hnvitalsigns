@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="no-heartratebodyposition-valueset" />
+  <meta>
+    <lastUpdated value="2021-01-06T22:37:54.724+11:00" />
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset" />
+  </meta>  
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="oo" />
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft" />
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1" />
+  </extension>
+  <url value="http://hl7.no/fhir/ValueSet/no-heartratebodyposition-valueset" />
+  <version value="4.0.0" />
+  <name value="NoHeartRateBodyPositionValueset" />
+  <title value="no-heartratebodyposition-valueset" />
+  <status value="draft" />
+  <experimental value="false" />
+  <date value="2021-01-06T22:37:54+11:00" />
+  <publisher value="" />
+  <contact>
+    <telecom>
+      <system value="url" />
+      <value value="http://hl7.org/fhir" />
+    </telecom>
+  </contact>
+   <compose>
+    <include>
+      <system value="http://snomed.info/sct" />
+      <concept>
+        <code value="10904000" />
+        <display value="Stående" />
+      </concept>
+      <concept>
+        <code value="33586001" />
+        <display value="Sittende" />
+      </concept>
+	  <concept>
+        <code value="272580008" />
+        <display value="Tilbakelent" />
+      </concept>
+	  <concept>
+        <code value="4801000202104" />
+        <display value="Liggende" />
+      </concept>
+      <filter>
+        <property value="concept" />
+        <op value="is-a" />
+        <value value="422431001" />
+      </filter>
+    </include>
+  </compose>
+</ValueSet>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValueSet
+	xmlns="http://hl7.org/fhir">
+	<id value="no-bodyexposure-valueset"/>
+	<meta>
+		<lastUpdated value="2021-01-06T22:37:54.724+11:00"/>
+		<profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+	</meta>
+	<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+		<valueCode value="fhir"/>
+	</extension>
+	<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+		<valueCode value="draft"/>
+	</extension>
+	<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+		<valueInteger value="1"/>
+	</extension>
+	<url value="http://hl7.no/fhir/ValueSet/no-bodyexposure-valueset"/>
+	<version value="4.0.0"/>
+	<name value="NoBodyExposureValueSet"/>
+	<status value="draft"/>
+	<experimental value="false"/>
+	<date value="2021-01-06T11:00:00+02:00"/>
+	<publisher value=""/>
+	<compose>
+		<include>
+			<system value="http://snomed.info/sct"/>
+			<concept>
+				<code value="5671000202107"/>
+				<display value="Naken"/>
+			</concept>
+			<concept>
+				<code value="5591000202105"/>
+				<display value="Redusert påkledning/tildekking"/>
+			</concept>
+			<concept>
+				<code value="5611000202100"/>
+				<display value="Passende påkledning/tildekking"/>
+			</concept>
+			<concept>
+				<code value="5601000202102"/>
+				<display value="Økt påkledning/tildekking"/>
+			</concept>
+			<filter>
+				<property value="concept" />
+				<op value="is-a" />
+				<value value="3531000202108" />
+			</filter>
+		</include>
+	</compose>
+</ValueSet> 

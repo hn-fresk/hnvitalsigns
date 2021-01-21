@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValueSet
+	xmlns="http://hl7.org/fhir">
+	<id value="no-resprateDepth-valueset"/>
+	<meta>
+		<lastUpdated value="2021-01-06T22:37:54.724+11:00"/>
+		<profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+	</meta>
+	<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+		<valueCode value="fhir"/>
+	</extension>
+	<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+		<valueCode value="draft"/>
+	</extension>
+	<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+		<valueInteger value="1"/>
+	</extension>
+	<url value="http://hl7.no/fhir/ValueSet/no-resprateDepth-valueset"/>
+	<version value="4.0.0"/>
+	<name value="NoRespRateDepthValueSet"/>
+	<status value="draft"/>
+	<experimental value="false"/>
+	<date value="2021-01-06T11:00:00+02:00"/>
+	<publisher value=""/>
+	<compose>
+		<include>
+			<system value="http://snomed.info/sct"/>
+			<concept>
+				<code value="301284009"/>
+				<display value="Normal"/>
+			</concept>
+			<concept>
+				<code value="386616007"/>
+				<display value="Overfladisk"/>
+			</concept>
+			<concept>
+				<code value="289123006"/>
+				<display value="Dyp"/>
+			</concept>
+			<concept>
+				<code value="248587009"/>
+				<display value="Varierende"/>
+			</concept>
+			<filter>
+				<property value="concept" />
+				<op value="is-a" />
+				<value value="271626009" />
+			</filter>
+		</include>
+	</compose>
+</ValueSet> 

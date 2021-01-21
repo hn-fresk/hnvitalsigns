@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="no-respirationdepth-valueset" />
+  <meta>
+    <lastUpdated value="2018-12-27T22:37:54.724+11:00" />
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset" />
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="oo" />
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft" />
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1" />
+  </extension>
+  <url value="http://hl7.no/fhir/ValueSet/no-respirationdepth-valueset" />
+  <version value="4.0.0" />
+   <name value="NoRespirationDepthValueset"/>
+	<title value="Codes representing Respiration Depth"/>
+	<status value="draft"/>
+	<experimental value="false"/>
+	<date value="2019-09-27T11:00:00+02:00"/>
+	<publisher value=""/>
+	<description value="Codes representing Respiration Depth"/>
+	<compose>
+    <include>
+      <system value="http://snomed.info/sct" />
+      <filter>
+        <property value="concept" />
+        <op value="is-a" />
+        <value value="XXXXXXXX" />
+      </filter>
+	  
+	    <concept>
+            <code value="1"/>
+            <display value="Normal"/>
+         </concept>		  
+		 <concept>
+            <code value="2"/>
+            <display value="Superficial"/>
+         </concept>
+		<concept>
+            <code value="3"/>
+            <display value="Deep"/>
+         </concept>
+		 <concept>
+            <code value="4"/>
+            <display value="Varying"/>
+         </concept>
+    </include>
+  </compose>
+</ValueSet>

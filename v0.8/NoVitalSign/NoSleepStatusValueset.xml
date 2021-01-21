@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ValueSet xmlns="http://hl7.org/fhir">
+	<id value="no-sleepStatus-valueset" />
+	<meta>
+		<lastUpdated value="2021-01-06T22:37:54.724+11:00" />
+		<profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset" />
+	</meta>
+	<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+		<valueCode value="oo" />
+	</extension>
+	<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+		<valueCode value="draft" />
+	</extension>
+	<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+		<valueInteger value="1" />
+	</extension>
+	<url value="http://hl7.org/fhir/ValueSet/no-sleepStatus-valueset" />
+	<version value="4.0.0" />
+	<name value="HNSleepStatusValueset"/>
+	<title value="Codes representing Sleep Status"/>
+	<status value="draft"/>
+	<experimental value="false"/>
+	<date value="2021-01-06T11:00:00+02:00"/>
+	<publisher value=""/>
+	<description value="Codes representing Sleep Status"/>
+	<compose>
+		<include>
+			<system value="http://snomed.info/sct" />
+			<filter>
+				<property value="concept" />
+				<op value="is-a" />
+				<value value="27625002" />
+			</filter>
+
+			<concept>
+				<code value="248218005"/>
+				<display value="Våken"/>
+			</concept>
+			<concept>
+				<code value="248220008"/>
+				<display value="Sovende"/>
+			</concept>
+		</include>
+	</compose>
+</ValueSet>

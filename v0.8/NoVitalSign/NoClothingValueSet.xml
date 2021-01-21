@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="no-clothing-valueset" />
+  <meta>
+    <lastUpdated value="2021-01-06T22:37:54.724+11:00" />
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset" />
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="oo" />
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft" />
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1" />
+  </extension>
+  <url value="http://hl7.no/fhir/ValueSet/no-clothing-valueset" />
+  <version value="4.0.0" />
+  <name value="NoClothingValueSet" />
+  <title value="Codes representing level of clothing" />
+  <status value="draft" />
+  <experimental value="false" />
+  <date value="2021-01-06T22:37:54+11:00" />
+  <publisher value="" />
+  <description value="Codes representing level of clothing" />
+  <compose>
+    <include>
+      <system value="http://snomed.info/sct" />
+      <concept>
+        <code value="1081761000202106" />
+        <display value="Naken" />
+      </concept>
+      <concept>
+        <code value="1081781000202100" />
+        <display value="Lette klær / undertøy" />
+      </concept>
+      <concept>
+        <code value="1081791000202103" />
+        <display value="Fullt påkledd uten sko" />
+      </concept>
+      <concept>
+        <code value="1081801000202104" />
+        <display value="Fullt påkledd inklusive sko" />
+      </concept>
+      <concept>
+        <code value="1081771000202102" />
+        <display value="Bleie" />
+      </concept>
+      <filter>
+        <property value="concept" />
+        <op value="is-a" />
+        <value value="3541000202102" />
+      </filter>
+    </include>
+  </compose>
+</ValueSet>
