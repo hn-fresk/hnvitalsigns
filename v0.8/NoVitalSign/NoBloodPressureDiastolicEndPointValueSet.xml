@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="no-bloodpressurediastolicendpoint-valueset" />
+  <meta>
+    <lastUpdated value="2021-01-06T22:37:54.724+11:00" />
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset" />
+  </meta>  
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="oo" />
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="draft" />
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1" />
+  </extension>
+  <url value="http://hl7.no/fhir/ValueSet/no-bloodpressurediastolicendpoint-valueset" />
+  <version value="4.0.0" />
+  <name value="NoBloodPressureBodySiteValueSet" />
+  <title value="no-bloodpressurediastolicendpoint-valueset" />
+  <status value="draft" />
+  <experimental value="false" />
+  <date value="2021-01-28T22:37:54+11:00" />
+  <publisher value="" />
+  <contact>
+    <telecom>
+      <system value="url" />
+      <value value="http://hl7.org/fhir" />
+    </telecom>
+  </contact>
+   <compose>
+    <include>
+      <system value="http://snomed.info/sct" />
+      <concept>
+        <code value="1081871000202109" />
+        <display value="Fase IV" />
+      </concept>
+      <concept>
+        <code value="1081881000202106" />
+        <display value="Fase V" />
+      </concept>
+    </include>
+  </compose>
+</ValueSet>

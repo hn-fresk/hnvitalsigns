@@ -438,7 +438,7 @@
       <type>
         <code value="uri" />
       </type>
-      <fixedUri value="http://snomed.info/sct" />
+      <fixedUri value="http://hl7.no/fhir/ValueSet/no-clothing-valueset" />
       <condition value="ele-1" />
       <constraint>
         <key value="ele-1" />
@@ -713,7 +713,7 @@
     <element id="Extension.value[x].coding.system">
       <path value="Extension.value[x].coding.system" />
       <min value="1" />
-      <fixedUri value="http://snomed.info/sct" />
+      <fixedUri value="http://hl7.no/fhir/ValueSet/no-clothing-valueset" />
     </element>
     <element id="Extension.value[x].coding.version">
       <path value="Extension.value[x].coding.version" />

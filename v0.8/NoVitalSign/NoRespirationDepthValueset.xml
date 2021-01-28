@@ -26,27 +26,22 @@
 	<compose>
     <include>
       <system value="http://snomed.info/sct" />
-      <filter>
-        <property value="concept" />
-        <op value="is-a" />
-        <value value="XXXXXXXX" />
-      </filter>
-	  
+      	  
 	    <concept>
-            <code value="1"/>
+            <code value="301284009"/>
             <display value="Normal"/>
          </concept>		  
 		 <concept>
-            <code value="2"/>
-            <display value="Superficial"/>
+            <code value="386616007"/>
+            <display value="Overfladisk"/>
          </concept>
 		<concept>
-            <code value="3"/>
-            <display value="Deep"/>
+            <code value="289123006"/>
+            <display value="Dyp"/>
          </concept>
 		 <concept>
-            <code value="4"/>
-            <display value="Varying"/>
+            <code value="248587009"/>
+            <display value="Varierende"/>
          </concept>
     </include>
   </compose>
