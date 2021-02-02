@@ -46,11 +46,7 @@
         <code value="1081771000202102" />
         <display value="Bleie" />
       </concept>
-      <filter>
-        <property value="concept" />
-        <op value="is-a" />
-        <value value="3541000202102" />
-      </filter>
+     
     </include>
   </compose>
 </ValueSet>

@@ -431,6 +431,10 @@
         <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
         <source value="Extension" />
       </constraint>
+      <binding>
+        <strength value="required" />
+        <valueSet value="http://hl7.no/fhir/ValueSet/no-clothing-valueset" />
+      </binding>
       <mapping>
         <identity value="rim" />
         <map value="n/a" />
@@ -1071,6 +1075,51 @@
       <mapping>
         <identity value="orim" />
         <map value="fhir:CodeableConcept.text rdfs:subPropertyOf dt:CD.originalText" />
+      </mapping>
+    </element>
+    <element id="Observation.extension:confundingFactor">
+      <path value="Observation.extension" />
+      <sliceName value="confundingFactor" />
+      <short value="Optional Extensions Element" />
+      <definition value="Optional Extension Element - found in all resources." />
+      <comment value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
+      <alias value="extensions" />
+      <alias value="user content" />
+      <min value="0" />
+      <max value="*" />
+      <base>
+        <path value="DomainResource.extension" />
+        <min value="0" />
+        <max value="*" />
+      </base>
+      <type>
+        <code value="Extension" />
+        <profile value="http://hl7.no/fhir/StructureDefinition/no-confundingfactor-extension" />
+      </type>
+      <condition value="ele-1" />
+      <constraint>
+        <key value="ele-1" />
+        <severity value="error" />
+        <human value="All FHIR elements must have a @value or children" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
+        <xpath value="@value|f:*|h:div" />
+        <source value="Element" />
+      </constraint>
+      <constraint>
+        <key value="ext-1" />
+        <severity value="error" />
+        <human value="Must have either extensions or value[x], not both" />
+        <expression value="extension.exists() != value.exists()" />
+        <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
+        <source value="Extension" />
+      </constraint>
+      <mapping>
+        <identity value="rim" />
+        <map value="n/a" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="N/A" />
       </mapping>
     </element>
     <element id="Observation.modifierExtension">
@@ -5077,6 +5126,10 @@
         <code value="Extension" />
         <profile value="http://hl7.no/fhir/StructureDefinition/no-clothing-extension" />
       </type>
+      <binding>
+        <strength value="required" />
+        <valueSet value="http://hl7.no/fhir/ValueSet/no-clothing-valueset" />
+      </binding>
     </element>
     <element id="Observation.extension:clothingState.id">
       <path value="Observation.extension.id" />
@@ -5085,6 +5138,14 @@
     <element id="Observation.extension:clothingState.value[x].id">
       <path value="Observation.extension.value[x].id" />
       <max value="0" />
+    </element>
+    <element id="Observation.extension:confundingFactor">
+      <path value="Observation.extension" />
+      <sliceName value="confundingFactor" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://hl7.no/fhir/StructureDefinition/no-confundingfactor-extension" />
+      </type>
     </element>
     <element id="Observation.code.id">
       <path value="Observation.code.id" />

@@ -39,11 +39,7 @@
         <code value="4801000202104" />
         <display value="Liggende" />
       </concept>
-      <filter>
-        <property value="concept" />
-        <op value="is-a" />
-        <value value="422431001" />
-      </filter>
+     
     </include>
   </compose>
 </ValueSet>

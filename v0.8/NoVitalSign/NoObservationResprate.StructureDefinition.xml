@@ -431,6 +431,10 @@
         <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
         <source value="Extension" />
       </constraint>
+      <binding>
+        <strength value="required" />
+        <valueSet value="http://hl7.no/fhir/ValueSet/no-resprateDepth-valueset" />
+      </binding>
       <mapping>
         <identity value="rim" />
         <map value="n/a" />
@@ -566,6 +570,10 @@
         <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
         <source value="Extension" />
       </constraint>
+      <binding>
+        <strength value="required" />
+        <valueSet value="http://hl7.no/fhir/ValueSet/no-respratebodyposition-valueset" />
+      </binding>
       <mapping>
         <identity value="rim" />
         <map value="n/a" />
@@ -611,6 +619,10 @@
         <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
         <source value="Extension" />
       </constraint>
+      <binding>
+        <strength value="required" />
+        <valueSet value="http://hl7.org/fhir/ValueSet/no-respirationregularity-valueset" />
+      </binding>
       <mapping>
         <identity value="rim" />
         <map value="n/a" />
@@ -629,7 +641,7 @@
       <alias value="extensions" />
       <alias value="user content" />
       <min value="0" />
-      <max value="*" />
+      <max value="1" />
       <base>
         <path value="DomainResource.extension" />
         <min value="0" />
@@ -4878,6 +4890,10 @@
         <code value="Extension" />
         <profile value="http://hl7.no/fhir/StructureDefinition/no-respirationdepth-extension" />
       </type>
+      <binding>
+        <strength value="required" />
+        <valueSet value="http://hl7.no/fhir/ValueSet/no-resprateDepth-valueset" />
+      </binding>
     </element>
     <element id="Observation.extension:levelOfExertion">
       <path value="Observation.extension" />
@@ -4905,6 +4921,10 @@
         <code value="Extension" />
         <profile value="http://hl7.org/fhir/StructureDefinition/NoRespRateBodyPositionExtension" />
       </type>
+      <binding>
+        <strength value="required" />
+        <valueSet value="http://hl7.no/fhir/ValueSet/no-respratebodyposition-valueset" />
+      </binding>
     </element>
     <element id="Observation.extension:respirationRegularity">
       <path value="Observation.extension" />
@@ -4913,10 +4933,15 @@
         <code value="Extension" />
         <profile value="http://hl7.no/fhir/StructureDefinition/no-respirationregularity-extension" />
       </type>
+      <binding>
+        <strength value="required" />
+        <valueSet value="http://hl7.org/fhir/ValueSet/no-respirationregularity-valueset" />
+      </binding>
     </element>
     <element id="Observation.extension:inspiredOxygen">
       <path value="Observation.extension" />
       <sliceName value="inspiredOxygen" />
+      <max value="1" />
       <type>
         <code value="Extension" />
         <profile value="http://hl7.no/fhir/StructureDefinition/no-noinspiredoxygen-extension" />

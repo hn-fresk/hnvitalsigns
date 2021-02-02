@@ -83,11 +83,7 @@
         <code value="450718002" />
         <display value="Tinning" />
       </concept>
-      <filter>
-        <property value="concept" />
-        <op value="is-a" />
-        <value value="6881000202104" />
-      </filter>
+     
     </include>
   </compose>
 </ValueSet>

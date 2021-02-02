@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ValueSet xmlns="http://hl7.org/fhir">
-  <id value="no-heartrythmIrregularity-valueset" />
+  <id value="no-heartrhythmIrregularity-valueset" />
   <meta>
     <lastUpdated value="2021-01-06T22:37:54.724+11:00" />
     <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset" />
@@ -14,10 +14,10 @@
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
   </extension>
-  <url value="http://hl7.org/fhir/ValueSet/no-heartrythmIrregularity-valueset" />
+  <url value="http://hl7.org/fhir/ValueSet/no-heartrhythmIrregularity-valueset" />
   <version value="4.0.0" />
-  <name value="NoHeartRythmIrregularityValueset" />
-  <title value="SNOMED CT Body Structures" />
+  <name value="NoHeartRhythmIrregularityValueset" />
+  <title value="no-heartrhythmIrregularity-valueset" />
   <status value="draft" />
   <experimental value="false" />
   <date value="2021-01-06T22:37:54+11:00" />
@@ -38,7 +38,7 @@
 		  <concept>
             <code value="271637005"/>
             <display value="Uregelmessig uregelmessig"/>
-         </concept>	  
+         </concept>	 		 
     </include>
   </compose>
 </ValueSet>

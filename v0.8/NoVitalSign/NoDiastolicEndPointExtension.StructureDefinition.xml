@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
-  <url value="http://hl7.org/fhir/StructureDefinition/NoHeartRateBodyPositionExtension" />
-  <name value="NoHeartRateBodyPositionExtension" />
+  <url value="http://hl7.org/fhir/StructureDefinition/NoDiastolicEndPointExtension" />
+  <name value="NoDiastolicEndPointExtension" />
   <status value="draft" />
   <fhirVersion value="4.0.0" />
   <mapping>
@@ -12,7 +12,7 @@
   <kind value="complex-type" />
   <abstract value="false" />
   <context>
-    <type value="element" />
+    <type value="fhirpath" />
     <expression value="Observation" />
   </context>
   <type value="Extension" />
@@ -163,7 +163,7 @@
           </extension>
         </code>
       </type>
-      <fixedUri value="http://hl7.org/fhir/StructureDefinition/NoHeartRateBodyPositionExtension" />
+      <fixedUri value="http://hl7.org/fhir/StructureDefinition/NoDiastolicEndPointExtension" />
       <mapping>
         <identity value="rim" />
         <map value="N/A" />
@@ -195,7 +195,7 @@
       </constraint>
       <binding>
         <strength value="required" />
-        <valueSet value="http://hl7.no/fhir/ValueSet/no-heartratebodyposition-valueset" />
+        <valueSet value="http://dips.no/fhir/ValueSet/no-diastolicendpoint-valueset" />
       </binding>
       <mapping>
         <identity value="rim" />
@@ -315,7 +315,7 @@
       <isSummary value="true" />
       <binding>
         <strength value="required" />
-        <valueSet value="http://hl7.no/fhir/ValueSet/no-heartratebodyposition-valueset" />
+        <valueSet value="http://dips.no/fhir/ValueSet/no-diastolicendpoint-valueset" />
       </binding>
       <mapping>
         <identity value="rim" />
@@ -393,7 +393,7 @@
   <differential>
     <element id="Extension.url">
       <path value="Extension.url" />
-      <fixedUri value="http://hl7.org/fhir/StructureDefinition/NoHeartRateBodyPositionExtension" />
+      <fixedUri value="http://hl7.org/fhir/StructureDefinition/NoDiastolicEndPointExtension" />
     </element>
     <element id="Extension.value[x]">
       <path value="Extension.value[x]" />
@@ -402,14 +402,14 @@
       </type>
       <binding>
         <strength value="required" />
-        <valueSet value="http://hl7.no/fhir/ValueSet/no-heartratebodyposition-valueset" />
+        <valueSet value="http://dips.no/fhir/ValueSet/no-diastolicendpoint-valueset" />
       </binding>
     </element>
     <element id="Extension.value[x].coding">
       <path value="Extension.value[x].coding" />
       <binding>
         <strength value="required" />
-        <valueSet value="http://hl7.no/fhir/ValueSet/no-heartratebodyposition-valueset" />
+        <valueSet value="http://dips.no/fhir/ValueSet/no-diastolicendpoint-valueset" />
       </binding>
     </element>
   </differential>

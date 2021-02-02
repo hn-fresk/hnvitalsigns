@@ -41,11 +41,7 @@
 				<code value="248587009"/>
 				<display value="Varierende"/>
 			</concept>
-			<filter>
-				<property value="concept" />
-				<op value="is-a" />
-				<value value="271626009" />
-			</filter>
+			
 		</include>
 	</compose>
 </ValueSet> 

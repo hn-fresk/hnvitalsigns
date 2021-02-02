@@ -47,11 +47,6 @@
         <code value="1*4" />
         <display value="Automatisk, invasivt" />
       </concept>
-      <filter>
-        <property value="concept" />
-        <op value="is-a" />
-        <value value="370129005" />
-      </filter>
     </include>
   </compose>
 </ValueSet>

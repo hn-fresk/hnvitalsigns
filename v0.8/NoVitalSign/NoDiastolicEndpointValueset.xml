@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ValueSet xmlns="http://hl7.org/fhir">
-	<id value="no-respirationregularity-valueset" />
+	<id value="no-diastolicendpoint-valueset" />
 	<meta>
-		<lastUpdated value="2021-01-06T22:37:54.724+11:00" />
+		<lastUpdated value="2018-12-27T22:37:54.724+11:00" />
 		<profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset" />
 	</meta>
 	<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
@@ -14,27 +14,27 @@
 	<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
 		<valueInteger value="1" />
 	</extension>
-	<url value="http://hl7.org/fhir/ValueSet/no-respirationregularity-valueset" />
+	<url value="http://dips.no/fhir/ValueSet/no-diastolicendpoint-valueset" />
 	<version value="4.0.0" />
-	<name value="NoRespirationRegularityValueset"/>
-	<title value="Codes representing Respiration Regularity"/>
+	<name value="NoDiastolicEndpointValueset"/>
+	<title value="Codes representing Diastolic end point"/>
 	<status value="draft"/>
 	<experimental value="false"/>
-	<date value="2021-01-06T11:00:00+02:00"/>
+	<date value="2019-09-27T11:00:00+02:00"/>
 	<publisher value=""/>
-	<description value="Codes representing Respiration Regularity"/>
+	<description value="Codes representing Diastolic end point"/>  
 	<compose>
 		<include>
 			<system value="http://snomed.info/sct" />
-			<concept>
-				<code value="276888009"/>
-				<display value="Regelmessig"/>
-			</concept>		  
-			<concept>
-				<code value="248585001"/>
-				<display value="Uregelmessig"/>
-			</concept>	
-						
+			 <concept>
+            <code value="1081871000202109"/>
+            <display value="Fase IV"/>
+         </concept>	
+		  <concept>
+            <code value="1081881000202106"/>
+            <display value="Fase V"/>
+         </concept>	
+
 		</include>
 	</compose>
 </ValueSet>

@@ -194,7 +194,7 @@
         <source value="Element" />
       </constraint>
       <binding>
-        <strength value="preferred" />
+        <strength value="required" />
         <valueSet value="http://hl7.no/fhir/ValueSet/no-bodyheightbodyposition-valueset" />
       </binding>
       <mapping>
@@ -313,6 +313,10 @@
         <source value="Element" />
       </constraint>
       <isSummary value="true" />
+      <binding>
+        <strength value="required" />
+        <valueSet value="http://hl7.no/fhir/ValueSet/no-bodyheightbodyposition-valueset" />
+      </binding>
       <mapping>
         <identity value="rim" />
         <map value="n/a" />
@@ -693,7 +697,14 @@
         <code value="CodeableConcept" />
       </type>
       <binding>
-        <strength value="preferred" />
+        <strength value="required" />
+        <valueSet value="http://hl7.no/fhir/ValueSet/no-bodyheightbodyposition-valueset" />
+      </binding>
+    </element>
+    <element id="Extension.value[x].coding">
+      <path value="Extension.value[x].coding" />
+      <binding>
+        <strength value="required" />
         <valueSet value="http://hl7.no/fhir/ValueSet/no-bodyheightbodyposition-valueset" />
       </binding>
     </element>

@@ -16,7 +16,7 @@
 	</extension>
 	<url value="http://hl7.org/fhir/ValueSet/no-sleepStatus-valueset" />
 	<version value="4.0.0" />
-	<name value="HNSleepStatusValueset"/>
+	<name value="NoSleepStatusValueset"/>
 	<title value="Codes representing Sleep Status"/>
 	<status value="draft"/>
 	<experimental value="false"/>
@@ -26,12 +26,7 @@
 	<compose>
 		<include>
 			<system value="http://snomed.info/sct" />
-			<filter>
-				<property value="concept" />
-				<op value="is-a" />
-				<value value="27625002" />
-			</filter>
-
+			
 			<concept>
 				<code value="248218005"/>
 				<display value="Våken"/>

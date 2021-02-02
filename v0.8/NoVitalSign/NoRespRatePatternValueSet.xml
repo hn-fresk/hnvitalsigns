@@ -33,11 +33,7 @@
 				<code value="1081891000202108"/>
 				<display value="Fraværende"/>
 			</concept>
-			<filter>
-				<property value="concept" />
-				<op value="is-a" />
-				<value value="364062005" />
-			</filter>
+			
 		</include>
 	</compose>
 </ValueSet> 

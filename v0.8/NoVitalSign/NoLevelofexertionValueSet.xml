@@ -24,11 +24,7 @@
 	<publisher value=""/>
 	<compose>
 		<include>
-			<filter>
-				<property value="concept" />
-				<op value="is-a" />
-				<value value="19487008" />
-			</filter>
+			
 		</include>
 	</compose>
 </ValueSet> 

@@ -51,11 +51,6 @@
         <code value="414585002" />
         <display value="Liggende lent mot venstre" />
       </concept>
-      <filter>
-        <property value="concept" />
-        <op value="is-a" />
-        <value value="422431001" />
-      </filter>
     </include>
   </compose>
 </ValueSet>

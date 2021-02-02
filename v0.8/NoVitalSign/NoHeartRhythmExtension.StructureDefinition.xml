@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
-  <url value="http://hl7.org/fhir/StructureDefinition/no-heartrythm-extension" />
-  <name value="NoHeartRythmExtension" />
+  <url value="http://hl7.org/fhir/StructureDefinition/no-heartrhythm-extension" />
+  <name value="NoHeartRhythmExtension" />
   <status value="draft" />
   <fhirVersion value="4.0.0" />
   <kind value="complex-type" />
@@ -158,7 +158,7 @@
           </extension>
         </code>
       </type>
-      <fixedUri value="http://hl7.org/fhir/StructureDefinition/no-heartrythm-extension" />
+      <fixedUri value="http://hl7.org/fhir/StructureDefinition/no-heartrhythm-extension" />
       <mapping>
         <identity value="rim" />
         <map value="N/A" />
@@ -190,7 +190,7 @@
       </constraint>
       <binding>
         <strength value="required" />
-        <valueSet value="http://hl7.org/fhir/ValueSet/no-heartrythm-valueset" />
+        <valueSet value="http://hl7.org/fhir/ValueSet/no-heartrhythm-valueset" />
       </binding>
       <mapping>
         <identity value="rim" />
@@ -308,6 +308,10 @@
         <source value="Element" />
       </constraint>
       <isSummary value="true" />
+      <binding>
+        <strength value="required" />
+        <valueSet value="http://hl7.org/fhir/ValueSet/no-heartrhythm-valueset" />
+      </binding>
       <mapping>
         <identity value="rim" />
         <map value="n/a" />
@@ -446,7 +450,7 @@
       <isSummary value="true" />
       <binding>
         <strength value="required" />
-        <valueSet value="http://hl7.org/fhir/ValueSet/no-heartrythm-valueset" />
+        <valueSet value="http://hl7.org/fhir/ValueSet/no-heartrhythm-valueset" />
       </binding>
       <mapping>
         <identity value="rim" />
@@ -683,7 +687,7 @@
   <differential>
     <element id="Extension.url">
       <path value="Extension.url" />
-      <fixedUri value="http://hl7.org/fhir/StructureDefinition/no-heartrythm-extension" />
+      <fixedUri value="http://hl7.org/fhir/StructureDefinition/no-heartrhythm-extension" />
     </element>
     <element id="Extension.value[x]">
       <path value="Extension.value[x]" />
@@ -692,14 +696,21 @@
       </type>
       <binding>
         <strength value="required" />
-        <valueSet value="http://hl7.org/fhir/ValueSet/no-heartrythm-valueset" />
+        <valueSet value="http://hl7.org/fhir/ValueSet/no-heartrhythm-valueset" />
+      </binding>
+    </element>
+    <element id="Extension.value[x].coding">
+      <path value="Extension.value[x].coding" />
+      <binding>
+        <strength value="required" />
+        <valueSet value="http://hl7.org/fhir/ValueSet/no-heartrhythm-valueset" />
       </binding>
     </element>
     <element id="Extension.value[x].coding.system">
       <path value="Extension.value[x].coding.system" />
       <binding>
         <strength value="required" />
-        <valueSet value="http://hl7.org/fhir/ValueSet/no-heartrythm-valueset" />
+        <valueSet value="http://hl7.org/fhir/ValueSet/no-heartrhythm-valueset" />
       </binding>
     </element>
   </differential>

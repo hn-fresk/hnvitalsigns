@@ -79,11 +79,6 @@
         <code value="51114001" />
         <display value="Intra-arterielt" />
       </concept>
-      <filter>
-        <property value="concept" />
-        <op value="is-a" />
-        <value value="6881000202104" />
-      </filter>
     </include>
   </compose>
 </ValueSet>

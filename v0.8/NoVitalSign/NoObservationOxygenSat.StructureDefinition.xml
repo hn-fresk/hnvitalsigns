@@ -449,7 +449,7 @@
       <alias value="extensions" />
       <alias value="user content" />
       <min value="0" />
-      <max value="*" />
+      <max value="1" />
       <base>
         <path value="DomainResource.extension" />
         <min value="0" />
@@ -5815,6 +5815,7 @@
     <element id="Observation.extension:inspiredOxygen">
       <path value="Observation.extension" />
       <sliceName value="inspiredOxygen" />
+      <max value="1" />
       <type>
         <code value="Extension" />
         <profile value="http://hl7.no/fhir/StructureDefinition/no-noinspiredoxygen-extension" />

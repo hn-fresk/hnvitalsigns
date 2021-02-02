@@ -41,11 +41,6 @@
 				<code value="5601000202102"/>
 				<display value="Økt påkledning/tildekking"/>
 			</concept>
-			<filter>
-				<property value="concept" />
-				<op value="is-a" />
-				<value value="3531000202108" />
-			</filter>
 		</include>
 	</compose>
 </ValueSet> 
